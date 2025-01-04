@@ -1,4 +1,26 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Notes
+
+
+Competition
+https://cssgradient.io/
+https://css-generators.com/triangle-shapes/
+https://css-generators.com/wavy-shapes/
+https://denic.hashnode.dev/css-generators
+https://www.colorzilla.com/gradient-editor/
+https://cssgenerator.org/transform-css-generator.html
+https://cssbud.com/
+https://www.youtube.com/watch?v=ytnOT-gg5Lw - text stuff
+
+CSS
+- CSS Gradient
+- CSS SHapes: Stars, Squares, Waves
+- Flexbox: Give CSS code and TailwindCSS Code
+- Fancy Border Radius generator
+
+JS
+- DOM PARSER
+
+
 
 ## Getting Started
 
@@ -28,9 +50,3 @@ To learn more about Next.js, take a look at the following resources:
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

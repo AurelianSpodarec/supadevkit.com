@@ -7,7 +7,7 @@ interface IContent {
 function Content({ children, className }: IContent) {
   return (
     <main
-      className={`${className} overflow-hidden bg-[#121212] flex items-center justify-center bg-repeat`}
+      className={`${className} overflow-hidden flex-col bg-[#121212] flex items-center justify-center bg-repeat`}
       style={{
         backgroundImage: `
           linear-gradient(45deg, #1d1d1d 25%, transparent 0),
@@ -19,11 +19,12 @@ function Content({ children, className }: IContent) {
         backgroundSize: '20px 20px',
       }}
     >
-      {/* <div className="absolute overflow-y-auto scrollbar-main top-0 right-0 bottom-0 left-0 h-full w-full"> */}
-        <div className="flex items-center justify-center">
-          {children}
-        </div>
-      {/* </div> */}
+
+      <div className="flex items-center justify-center">
+        {children}
+      </div>
+
+      <div className="flex bg-gray-900 w-full h-40">HI</div>
     </main >
   )
 }

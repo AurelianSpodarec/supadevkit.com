@@ -1,6 +1,6 @@
 import plugin from 'tailwindcss/plugin'
 
-import { DashboardThemeNames, TwitterThemeNames, TwitterThemePrimary } from './themeNames'
+import { DashboardThemeNames } from './themeNames'
 import themeConfig from './themeConfig'
 
 export const theming = plugin(
@@ -28,41 +28,6 @@ export const theming = plugin(
       [`.${DashboardThemeNames.Theme3}`]: {
         '--primary': theme('colors.yellow.300'),
         '--secondary': theme('colors.purple.900')
-      },
-      // Twitter
-      // ===============================================================
-
-      // Twitter Theme
-      [`.${TwitterThemeNames.Default}`]: {
-        '--twitter-bg': theme('colors.twitter.white'),
-        '--twitter-foreground': theme('colors.twitter.black2')
-      },
-      [`.${TwitterThemeNames.Dim}`]: {
-        '--twitter-bg': theme('colors.twitter.dim'),
-        '--twitter-foreground': theme('colors.twitter.white2')
-      },
-      [`.${TwitterThemeNames.LightsOut}`]: {
-        '--twitter-bg': theme('colors.twitter.black'),
-        '--twitter-foreground': theme('colors.twitter.white3')
-      },
-      // TwitterThemePrimary
-      [`.${TwitterThemePrimary.Blue}`]: {
-        '--twitter-primary': theme('colors.twitter.blue'),
-      },
-      [`.${TwitterThemePrimary.Yellow}`]: {
-        '--twitter-primary': theme('colors.twitter.yellow'),
-      },
-      [`.${TwitterThemePrimary.Pink}`]: {
-        '--twitter-primary': theme('colors.twitter.pink'),
-      },
-      [`.${TwitterThemePrimary.Purple}`]: {
-        '--twitter-primary': theme('colors.twitter.purple'),
-      },
-      [`.${TwitterThemePrimary.Orange}`]: {
-        '--twitter-primary': theme('colors.twitter.orange'),
-      },
-      [`.${TwitterThemePrimary.Green}`]: {
-        '--twitter-primary': theme('colors.twitter.green'),
       },
     }),
     addBase({

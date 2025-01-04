@@ -4,9 +4,9 @@ function EditorLayout({ children }: { children: React.ReactNode }) {
   return (
     <body className={`overflow-hidden h-full`}>
       <AppProvider>
-        <div className="h-screen">
+        {/* <div className="h-screen"> */}
           {children}
-        </div>
+        {/* </div> */}
       </AppProvider>
     </body>
   )

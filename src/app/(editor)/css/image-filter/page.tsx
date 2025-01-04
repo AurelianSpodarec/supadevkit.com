@@ -83,7 +83,7 @@ function PageImageFilter() {
 
   return (
     <>
-      <Content>
+      {/* <Content>
         <img
           src="https://cdn.pixabay.com/photo/2019/03/27/15/24/animal-4085255_1280.jpg"
           style={{ filter: filterStyles, maxWidth: "100%", height: "auto" }}
@@ -122,7 +122,7 @@ function PageImageFilter() {
             />
           </div>
         ))}
-      </KitStyles>
+      </KitStyles> */}
     </>
   );
 }

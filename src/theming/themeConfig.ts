@@ -18,38 +18,6 @@ const themeConfig = {
         secondary: {
           DEFAULT: 'var(--secondary)'
         },
-
-        // Twitter
-        // ===================================================
-        twitter: {
-          blue: "#1d9bf0",
-          yellow: "#ffd400",
-          pink: "#f91880",
-          purple: "#7856ff",
-          orange: "#ff7a00",
-          green: "#00ba7c",
-
-          light: "#ffffff",
-          dim: "#15202b",
-          "lights-out": "#000",
-
-          white: "#ffffff",
-          black: "#000000",
-
-          black2: "#0f1419",
-          white2: "#f7f9f9",
-          white3: "#e7e9ea",
-
-          primary: {
-            DEFAULT: 'var(--twitter-primary)'
-          },
-          bg: {
-            DEFAULT: 'var(--twitter-bg)'
-          },
-          foreground: {
-            DEFAULT: 'var(--twitter-foreground)'
-          }
-        }
       },
       // border: {
       //   DEFAULT: 'var(--border-default)'

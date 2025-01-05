@@ -27,7 +27,7 @@ function Content({ children, className }: IContent) {
         {/* <div className="absolute w-full bg-green-500 z-10 bottom-16 w-[90%] mx-auto left-0 right-0 h-20">
               WOOOOP
             </div> */}
-        <div id="content">
+        <div id="content" className="h-full">
           {children}
         </div>
       </main>

@@ -1,20 +1,75 @@
+
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuPortal,
+  DropdownMenuSeparator,
+  DropdownMenuShortcut,
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+import Link from "next/link"
+
+export function DropdownMenuDemo() {
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <button className="flex items-center space-x-2">
+          <span className="text-sm font-semibold">Image Filter</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            className="w-4 h-4"
+            viewBox="0 0 16 16"
+          >
+            <path
+              stroke="currentColor"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="1.5"
+              d="M12.25 5.75 8 10.25l-4.25-4.5"
+            ></path>
+          </svg>
+        </button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent className="w-56 bg-black" align="start">
+        <DropdownMenuItem>
+          <Link href="/css/image-filter">Image Filter</Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <Link href="/css/gradient">Gradient</Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <Link href="/css/text-background">Text Background</Link>
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  )
+}
+
+
 function Header() {
   return (
     <header
       className="h-[55px] flex w-full align-center"
       style={{ background: "radial-gradient(circle at 35% 50%, rgba(43, 166, 255, .2) 0, transparent 45%), radial-gradient(circle at 65% 50%, rgba(246, 73, 66, .15) 0, transparent 45%)" }}
     >
-      <div className="flex w-full justify-between align-center items-center">
+      <div className="flex w-full justify-between align-center items-center px-4">
 
         <div className="fill-white text-white flex items-center space-x-2">
           <div>
             <svg
               className="h-6 w-6"
               xmlns="http://www.w3.org/2000/svg"
-              fill-rule="evenodd"
-              stroke-linejoin="round"
-              stroke-miterlimit="2"
-              clip-rule="evenodd"
+              fillRule="evenodd"
+              strokeLinejoin="round"
+              strokeMiterlimit="2"
+              clipRule="evenodd"
               viewBox="0 00 151 151"
             >
               <path d="m100 149.986-50-28.87v-25l50 28.87 50-28.87v25l-50 28.87Zm-75-50 28.868 50h-25L0 99.986l28.868-50h25L25 99.986Zm71.133-100h25l28.867 50-28.867 50h-25l28.867-50-28.867-50ZM50-.013l50 28.87v25l-50-28.87-50 28.87v-25L50-.014Z" />
@@ -33,9 +88,30 @@ function Header() {
               </svg> */}
 
           </div>
-          <span className="font-bold text-2xl">
-            SupaToolkit
-          </span>
+          <div className="flex items-center">
+            <span className="font-bold text-2xl">
+              SupaToolkit
+            </span>
+            <span className="ml-3 mr-1">
+              <svg
+                width="16"
+                height="16"
+                strokeLinejoin="round"
+                className="text-white/15"
+                data-testid="geist-icon"
+                style={{ width: "22px", height: "22px" }}
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill="currentColor"
+                  fillRule="evenodd"
+                  d="m4.015 15.394.296-.69 6-14 .295-.689 1.379.591-.296.69-6 14-.295.689z"
+                  clipRule="evenodd"
+                ></path>
+              </svg>
+            </span>
+            <DropdownMenuDemo />
+          </div>
         </div>
 
         <div className="flex items-center">
@@ -85,7 +161,7 @@ function Header() {
         </div>
 
       </div>
-    </header>
+    </header >
   )
 }
 

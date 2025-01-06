@@ -63,7 +63,7 @@ function PageImageFilter() {
 
   return (
     <>
-    <InfoDialog />
+    {/* <InfoDialog /> */}
       <Content>
         <img
           src="https://cdn.pixabay.com/photo/2019/03/27/15/24/animal-4085255_1280.jpg"

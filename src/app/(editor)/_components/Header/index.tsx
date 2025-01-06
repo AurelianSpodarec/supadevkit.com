@@ -37,15 +37,15 @@ export function DropdownMenuDemo() {
           </svg>
         </button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-56 bg-black" align="start">
+      <DropdownMenuContent className="w-56 bg-[#181818]" align="start">
         <DropdownMenuItem>
-          <Link href="/css/image-filter">Image Filter</Link>
+          <Link className="font-semibold" href="/css/image-filter">Image Filter</Link>
         </DropdownMenuItem>
         <DropdownMenuItem>
-          <Link href="/css/gradient">Gradient</Link>
+          <Link className="font-semibold" href="/css/gradient">Gradient</Link>
         </DropdownMenuItem>
         <DropdownMenuItem>
-          <Link href="/css/text-background">Text Background</Link>
+          <Link className="font-semibold" href="/css/text-background">Text Background</Link>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
@@ -92,6 +92,26 @@ function Header() {
             <span className="font-bold text-2xl">
               SupaToolkit
             </span>
+            <span className="ml-3 mr-1">
+              <svg
+                width="16"
+                height="16"
+                strokeLinejoin="round"
+                className="text-white/15"
+                data-testid="geist-icon"
+                style={{ width: "22px", height: "22px" }}
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill="currentColor"
+                  fillRule="evenodd"
+                  d="m4.015 15.394.296-.69 6-14 .295-.689 1.379.591-.296.69-6 14-.295.689z"
+                  clipRule="evenodd"
+                ></path>
+              </svg>
+            </span>
+
+CSS
             <span className="ml-3 mr-1">
               <svg
                 width="16"

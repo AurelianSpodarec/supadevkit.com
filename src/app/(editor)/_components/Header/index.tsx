@@ -47,6 +47,9 @@ export function DropdownMenuDemo() {
         <DropdownMenuItem>
           <Link className="font-semibold" href="/css/text-background">Text Background</Link>
         </DropdownMenuItem>
+        <DropdownMenuItem>
+          <Link className="font-semibold" href="/css/glow">Glow</Link>
+        </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   )
@@ -111,7 +114,7 @@ function Header() {
               </svg>
             </span>
 
-CSS
+            {/* CSS
             <span className="ml-3 mr-1">
               <svg
                 width="16"
@@ -129,7 +132,7 @@ CSS
                   clipRule="evenodd"
                 ></path>
               </svg>
-            </span>
+            </span> */}
             <DropdownMenuDemo />
           </div>
         </div>

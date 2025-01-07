@@ -17,27 +17,15 @@ export const theming = plugin(
         '--primary': theme('colors.green.400'),
         '--secondary': theme('colors.black.550')
       },
-      [`.${DashboardThemeNames.Theme1}`]: {
-        '--primary': theme('colors.yellow.400'),
-        '--secondary': theme('colors.blue.500')
-      },
-      [`.${DashboardThemeNames.Theme2}`]: {
-        '--primary': theme('colors.yellow.300'),
-        '--secondary': theme('colors.purple.900')
-      },
-      [`.${DashboardThemeNames.Theme3}`]: {
-        '--primary': theme('colors.yellow.300'),
-        '--secondary': theme('colors.purple.900')
-      },
     }),
-    addBase({
-      "html, body": {
-        '@apply h-full' : {}
-      },
-      body: {
-        '@apply bg-secondary': {}
-      }
-    })
+      addBase({
+        "html, body": {
+          '@apply h-full': {}
+        },
+        body: {
+          '@apply bg-secondary': {}
+        }
+      })
   },
   {
     theme: {

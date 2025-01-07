@@ -1,6 +1,8 @@
+'use client'
+
 function EditorFooter() {
   return (
-    <footer className="flex items-center justify-between py-2 px-4 text-xs">
+    <footer className="flex items-center justify-between py-3 px-4 text-xs">
       <span>
         &copy; {new Date().getFullYear()} SupaToolkit 🛠️✨ All rights reserved.
       </span>

@@ -5,7 +5,7 @@ import { ReduxProvider } from './redux-provider'
 
 function AppProvider({ children }: { children: React.ReactNode }) {
   return (
-    <ReduxProvider>
+    // <ReduxProvider>
       <ThemeProvider
         attribute="class"
         defaultTheme="system"
@@ -14,7 +14,7 @@ function AppProvider({ children }: { children: React.ReactNode }) {
       >
         {children}
       </ThemeProvider>
-    </ReduxProvider>
+    // </ReduxProvider>
   )
 }
 

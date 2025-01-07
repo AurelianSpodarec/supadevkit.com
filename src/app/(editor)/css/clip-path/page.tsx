@@ -1,4 +1,4 @@
-import CodeBlock from "@/components/atoms/CodeBlock"
+// import CodeBlock from "@/components/atoms/CodeBlock"
 import Content from "../../_components/Content"
 import EditPanel from "../../_components/EditPanel"
 
@@ -6,11 +6,11 @@ function PageCSSClipPath() {
   return (
     <>
       <Content>
-        <img
+        {/* <img
           src="https://cdn.pixabay.com/photo/2019/03/27/15/24/animal-4085255_1280.jpg"
           style={{ filter: filterStyles, maxWidth: "100%", height: "auto" }}
           alt="Sample"
-        />
+        /> */}
       </Content>
       <EditPanel>
 
@@ -24,7 +24,7 @@ function PageCSSClipPath() {
         } */}
 
 
-        <CodeBlock lang="css">{`filter: ${filterStyles};`}</CodeBlock>
+        {/* <CodeBlock lang="css">{`filter: ${filterStyles};`}</CodeBlock> */}
         {/* {Object.keys(filters).map((filterName) => (
           <FilterSlider
             key={filterName}

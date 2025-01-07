@@ -1,24 +1,21 @@
-// import EditPanelWidgets from "./widgets"
-// import { CWidgetContainer, CWidgetContent, CWidgetHeader } from "./widgets/_components/CWidget"
-import Editor from "react-simple-code-editor"
-// import { highlight, languages } from 'prismjs';
-// import 'prismjs/components/prism-clike';
-// import 'prismjs/components/prism-javascript';
-// import 'prismjs/components/prism-markup';
-// import 'prismjs/components/prism-jsx';
-// import 'prismjs/themes/prism.css'
+'use client'
 
-function EditPanel({ children, code }) {
+interface IProps {
+  children?: React.ReactNode
+  code?: string
+}
+
+function EditPanel({ children, code }: IProps) {
 
   return (
-    <aside className="w-[370px] overflow-auto h-full">
-      <div>
+    <aside className="w-[420px] bg-[#1c1c1e] overflow-auto h-full">
+      {/* <div> */}
 
-        <section>
-          <header className="flex items-center justify-between">
+        {/* <section> */}
+          {/* <header className="flex items-center justify-between"> */}
 
-            <div>
-              CSS | TailwindCSS | Styles
+            {/* <div> */}
+              {/* CSS | TailwindCSS | Styles */}
 
               {/* <button>
               <svg
@@ -35,22 +32,22 @@ function EditPanel({ children, code }) {
               </svg>
               <span className="sr-only">TailwindCSS</span>
             </button> */}
-            </div>
+            {/* </div>
             <div>
               Copy Code
               <div>
 
-              </div>
+              </div> */}
               {/* <div>
             Options: Align: Top, Bottom, Left, 
           </div> */}
-            </div>
-          </header>
-          <div className="relative">
-            <button className="absolute inset-0 z-10">
+            {/* </div>
+          </header> */}
+          {/* <div className="relative"> */}
+            {/* <button className="absolute inset-0 z-10">
               <span className="sr-only">Copy code</span>
-            </button>
-            <div className="border">
+            </button> */}
+            {/* <div className="border"> */}
               {/* <Editor
                 value={code}
                 onValueChange={code => setCode(code)}
@@ -61,15 +58,15 @@ function EditPanel({ children, code }) {
                   fontSize: 12,
                 }}
               /> */}
-            </div>
-          </div>
-        </section>
+            {/* </div/> */}
+          {/* </div> */}
+        {/* </section> */}
 
-      </div>
-      <section>
-        Configuration
+      {/* </div> */}
+      {/* <section> */}
+        {/* Configuration */}
         {children}
-      </section>
+      {/* </section> */}
       {/* {Object.keys(filters).map((filterName) => (
         <div key={filterName} style={{ margin: "10px 0" }}>
           <label>

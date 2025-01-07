@@ -9,7 +9,8 @@ const themeConfig = {
     },
     extend: {
       fontFamily: {
-        chirp: 'var(--font-chirp)'
+        poppins: 'var(--font-poppins)',
+        orbitron: 'var(--font-orbitron)',
       },
       colors: {
         primary: {
@@ -19,23 +20,9 @@ const themeConfig = {
           DEFAULT: 'var(--secondary)'
         },
       },
-      // border: {
-      //   DEFAULT: 'var(--border-default)'
-      // }
     }
   },
-  safelist: [
-    'bg-twitter-blue',
-    'bg-twitter-yellow',
-    'bg-twitter-pink',
-    'bg-twitter-purple',
-    'bg-twitter-orange',
-    'bg-twitter-green',
-
-    'bg-twitter-light',
-    'bg-twitter-dim',
-    'bg-twitter-lights-out'
-  ]
+  safelist: []
 }
 
 export default themeConfig;

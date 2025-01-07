@@ -18,7 +18,7 @@ interface ICWidgetHeader {
 export function CWidgetHeader({ name }: ICWidgetHeader) {
   return (
     <div className="mb-4">
-      <h3 className="text-[12px] font-medium text-white/90">
+      <h3 className="text-lg font-medium text-white/90 font-orbitron">
         {name}
       </h3>
     </div>

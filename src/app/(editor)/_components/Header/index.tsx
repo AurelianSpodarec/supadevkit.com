@@ -1,3 +1,4 @@
+'use client'
 
 import {
   DropdownMenu,
@@ -92,7 +93,7 @@ function Header() {
 
           </div>
           <div className="flex items-center">
-            <span className="font-bold text-2xl">
+            <span className="font-bold text-2xl font-orbitron">
               SupaToolkit
             </span>
             <span className="ml-3 mr-1">

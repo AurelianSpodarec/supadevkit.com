@@ -1,5 +1,6 @@
-import CodeBlock from "@/components/atoms/CodeBlock";
-import highlight from "@/components/atoms/Highlight";
+
+import { CodeBlock } from "@/app/(editor)/_components/EditPanel/widgets/_components/CodeBlock";
+import highlight from "@/app/(editor)/_components/EditPanel/widgets/_components/Highlight";
 
 async function Code() {
   return (

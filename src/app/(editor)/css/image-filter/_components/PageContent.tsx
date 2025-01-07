@@ -6,9 +6,8 @@ import dedent from "dedent";
 import Content from "../../../_components/Content";
 import EditPanel from "../../../_components/EditPanel";
 
-import { CodeBlock } from "@/components/atoms/CodeBlock";
+// import { CodeBlock } from "@/app/(editor)/_components/EditPanel/widgets/_components/CodeBlock";
 import { InfoDialog } from "./InfoDialog";
-import FilterSlider from "./FilterSlider";
 import { CWidgetContainer, CWidgetContent, CWidgetHeader } from "@/app/(editor)/_components/EditPanel/widgets/_components/CWidget";
 import SliderWithTextInside from "./TestSlider";
 
@@ -26,18 +25,19 @@ function PageContent() {
   const [activePicture, setActivePicture] = useState("https://cdn.pixabay.com/photo/2019/03/27/15/24/animal-4085255_1280.jpg")
 
   const filterStyles = `
-      blur(${filters.blur}px)
-      brightness(${filters.brightness}%) 
-      contrast(${filters.contrast}%) 
-      grayscale(${filters.grayscale}%) 
-      hue-rotate(${filters.hueRotate}deg) 
-      invert(${filters.invert}%) 
-      saturate(${filters.saturate}%) 
-      sepia(${filters.sepia}%)
-    `;
-  const [code, setCode] = useState(dedent`filter: ${filterStyles};`);
+    blur(${filters.blur}px)
+    brightness(${filters.brightness}%) 
+    contrast(${filters.contrast}%) 
+    grayscale(${filters.grayscale}%) 
+    hue-rotate(${filters.hueRotate}deg) 
+    invert(${filters.invert}%) 
+    saturate(${filters.saturate}%) 
+    sepia(${filters.sepia}%)
+  `;
+  
+  const code = dedent`filter: ${filterStyles};`;
 
-  const updateFilter = (filterName, value) => {
+  const updateFilter = (filterName:string, value) => {
     setFilters((prevFilters) => ({
       ...prevFilters,
       [filterName]: value,
@@ -66,12 +66,12 @@ function PageContent() {
       </Content>
 
       <EditPanel>
-        {/* <CWidgetContainer> */}
+        <CWidgetContainer>
         <CWidgetContent>
           <CWidgetHeader name="Code" />
-          <CodeBlock initialCode={code} lang="ts" />
+          {/* <CodeBlock initialCode={code} lang="ts" /> */}
         </CWidgetContent>
-        {/* </CWidgetContainer> */}
+        </CWidgetContainer>
 
         <CWidgetContainer>
           <CWidgetContent>
@@ -94,7 +94,28 @@ function PageContent() {
         </CWidgetContainer>
 
         <CWidgetContainer>
+          <CWidgetHeader name="Presets" />
+        </CWidgetContainer>
+
+        <CWidgetContainer>
           <CWidgetHeader name="Configuration" />
+          <button
+            type="button"
+            className="text-sm border rounded px-2 py-1"
+            onClick={() =>
+              setFilters({
+                blur: 0,
+                brightness: 100,
+                contrast: 100,
+                grayscale: 0,
+                hueRotate: 0,
+                invert: 0,
+                saturate: 100,
+                sepia: 0,
+              })
+            }
+          >Reset
+          </button>
           <CWidgetContent>
             {Object.keys(filters).map((filterName) => (
               <SliderWithTextInside

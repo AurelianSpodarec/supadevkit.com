@@ -4,26 +4,26 @@ import { useState, useEffect, JSX } from 'react';
 import highlight from './Highlight';
 
 interface CodeBlockProps {
-  initialCode: string; // Initial raw code from the parent
-  lang: string;        // Language for syntax highlighting
+  initialCode: string
+  lang: string  
 }
 
 export function CodeBlock({ initialCode, lang }: CodeBlockProps) {
-  const [code, setCode] = useState(initialCode);  // Manage the raw code
+  const [code, setCode] = useState(initialCode); // Manage the raw code
   const [renderedCode, setRenderedCode] = useState<JSX.Element | null>(null);
 
+  // Update `code` whenever `initialCode` changes
   useEffect(() => {
-    // Highlight the initial code and update the rendered output
+    setCode(initialCode);
+  }, [initialCode]);
+
+  useEffect(() => {
+    // Highlight the updated code and update the rendered output
     void highlight(code, lang as any).then(setRenderedCode);
   }, [code, lang]); // Re-render when `code` or `lang` changes
 
-  // Example: User edits the code (this is optional and for demonstration)
-  const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setCode(e.target.value);
-  };
-
   return (
-    <div className="text-sm">
+    <div className="text-xs">
       {renderedCode ?? <div></div>}
     </div>
   );

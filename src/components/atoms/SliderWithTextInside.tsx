@@ -26,17 +26,17 @@ const SliderWithTextInside = ({ filterName, value, updateFilter }: IProps) => {
       >
         <Slider.Track className="relative cursor-pointer w-full h-[28px] bg-[#101012] rounded-md overflow-hidden">
           <Slider.Range className="absolute h-full bg-[#2e2e30] " />
-          <div className="capitalize absolute top-1/2 left-2 -translate-y-1/2 text-[11px] text-white/60">
+          <div className="font-geistSans capitalize absolute top-1/2 left-2 -translate-y-1/2 text-[10px] text-white/60">
             {filterName}
           </div>
         </Slider.Track>
 
         <Slider.Thumb className="block w-[2px] ml-1 h-[20px] bg-white/30 shadow-md group-active:bg-blue-500" />
       </Slider.Root>
-      <div>
+      <div className="flex items-center justify-between">
         <input
           value={value}
-          className="text-sm px-2 p-1 font-semibold border border-gray-500/50 text-right rounded w-[40px]"
+          className="text-xs px-2 p-1 font-semibold border border-gray-500/50 text-right rounded w-[43px]"
           onChange={(e) => {
             const numericValue = parseInt(e.target.value, 10)
             if (!isNaN(numericValue)) {
@@ -44,6 +44,7 @@ const SliderWithTextInside = ({ filterName, value, updateFilter }: IProps) => {
             }
           }}
         />
+        <div className="text-xs ml-0.5">px</div>
       </div>
     </div>
   );

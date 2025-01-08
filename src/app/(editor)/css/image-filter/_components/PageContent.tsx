@@ -9,7 +9,7 @@ import EditPanel from "../../../_components/EditPanel";
 // import { CodeBlock } from "@/app/(editor)/_components/EditPanel/widgets/_components/CodeBlock";
 import { InfoDialog } from "./InfoDialog";
 import { CWidgetContainer, CWidgetContent, CWidgetHeader } from "@/app/(editor)/_components/EditPanel/widgets/_components/CWidget";
-import SliderWithTextInside from "./TestSlider";
+import SliderWithTextInside from "../../../../../components/atoms/SliderWithTextInside";
 
 function PageContent() {
   const [filters, setFilters] = useState({
@@ -82,7 +82,7 @@ function PageContent() {
                 return (
                   <button
                     key={image}
-                    className={`rounded-lg h-[50px] overflow-hidden border-2 border-solid  hover:border-blue-500/70 ${image === activePicture ? "border-blue-500" : "border-white border-opacity-[15%]"} `}
+                    className={`rounded h-[50px] overflow-hidden border-2 border-solid  hover:border-blue-500/70 ${image === activePicture ? "border-blue-500" : "border-white border-opacity-[15%]"} `}
                     onClick={() => setActivePicture(image)}
                   >
                     <img src={image} className="object-cover h-full w-full" />

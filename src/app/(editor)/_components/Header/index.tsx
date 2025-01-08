@@ -1,61 +1,6 @@
 'use client'
 
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuPortal,
-  DropdownMenuSeparator,
-  DropdownMenuShortcut,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import Link from "next/link"
-
-export function DropdownMenuDemo() {
-  return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <button className="flex items-center space-x-2">
-          <span className="text-sm font-semibold">Image Filter</span>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            className="w-4 h-4"
-            viewBox="0 0 16 16"
-          >
-            <path
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="1.5"
-              d="M12.25 5.75 8 10.25l-4.25-4.5"
-            ></path>
-          </svg>
-        </button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-56 bg-[#181818]" align="start">
-        <DropdownMenuItem>
-          <Link className="font-semibold" href="/css/image-filter">Image Filter</Link>
-        </DropdownMenuItem>
-        <DropdownMenuItem>
-          <Link className="font-semibold" href="/css/gradient">Gradient</Link>
-        </DropdownMenuItem>
-        <DropdownMenuItem>
-          <Link className="font-semibold" href="/css/text-background">Text Background</Link>
-        </DropdownMenuItem>
-        <DropdownMenuItem>
-          <Link className="font-semibold" href="/css/glow">Glow</Link>
-        </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
-  )
-}
-
+import MegaMenu from "./MegaMenu";
 
 function Header() {
   return (
@@ -68,7 +13,7 @@ function Header() {
         <div className="fill-white text-white flex items-center space-x-2">
           <div>
             <svg
-              className="h-6 w-6"
+              className="h-5 w-5"
               xmlns="http://www.w3.org/2000/svg"
               fillRule="evenodd"
               strokeLinejoin="round"
@@ -79,8 +24,9 @@ function Header() {
               <path d="m100 149.986-50-28.87v-25l50 28.87 50-28.87v25l-50 28.87Zm-75-50 28.868 50h-25L0 99.986l28.868-50h25L25 99.986Zm71.133-100h25l28.867 50-28.867 50h-25l28.867-50-28.867-50ZM50-.013l50 28.87v25l-50-28.87-50 28.87v-25L50-.014Z" />
             </svg>
           </div>
+
           <div className="flex items-center">
-            <span className="font-bold text-2xl font-orbitron">
+            <span className="font-bold text-xl font-geistMono">
               SupaToolkit
             </span>
             <span className="ml-3 mr-1">
@@ -102,31 +48,15 @@ function Header() {
               </svg>
             </span>
 
-            {/* CSS
-            <span className="ml-3 mr-1">
-              <svg
-                width="16"
-                height="16"
-                strokeLinejoin="round"
-                className="text-white/15"
-                data-testid="geist-icon"
-                style={{ width: "22px", height: "22px" }}
-                viewBox="0 0 16 16"
-              >
-                <path
-                  fill="currentColor"
-                  fillRule="evenodd"
-                  d="m4.015 15.394.296-.69 6-14 .295-.689 1.379.591-.296.69-6 14-.295.689z"
-                  clipRule="evenodd"
-                ></path>
-              </svg>
-            </span> */}
-            <DropdownMenuDemo />
+
+
+            <MegaMenu />
           </div>
         </div>
 
-        <div className="flex items-center">
-          <button className="flex items-center  space-x-2 border border-[#ff792f]/30 text-gray-100 font-medium px-3.5 py-2 rounded-lg">
+        <div className="flex items-center space-x-2">
+
+          <button className="inline-flex bg-[#222223]/40 text-[#FFF]/90 items-center gap-2 justify-center whitespace-nowrap rounded-md text-sm font-medium border border-[#444] px-4 py-2.5">
             <svg className="h-4 w-4" fill="none" viewBox="0 0 16 16">
               <path
                 stroke="currentColor"
@@ -155,7 +85,8 @@ function Header() {
             </svg>
             <span className="text-sm">About Image Filter</span>
           </button>
-          <button className="flex items-center border border-[#ff792f]/30 text-gray-100 font-medium px-3.5 py-2 rounded-lg space-x-2">
+
+          <button className="inline-flex items-center gap-2 justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-indigo-500 disabled:pointer-events-none disabled:opacity-50 bg-[#222223] text-secondary-foreground border border-[#444] hover:bg-[#222223] px-4 py-2.5">
             <svg className="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 127.14 96.36">
               <g>
                 <g data-name="Discord Logos">

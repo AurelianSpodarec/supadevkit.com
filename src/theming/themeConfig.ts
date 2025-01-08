@@ -11,6 +11,8 @@ const themeConfig = {
       fontFamily: {
         poppins: 'var(--font-poppins)',
         orbitron: 'var(--font-orbitron)',
+        geistMono: 'var(--font-geist-mono)',
+        geistSans: 'var(--font-geist-sans)',
       },
       colors: {
         primary: {

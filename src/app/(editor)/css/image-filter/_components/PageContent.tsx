@@ -6,7 +6,7 @@ import dedent from "dedent";
 import Content from "../../../_components/Content";
 import EditPanel from "../../../_components/EditPanel";
 
-// import { CodeBlock } from "@/app/(editor)/_components/EditPanel/widgets/_components/CodeBlock";
+import { CodeBlock } from "@/app/(editor)/_components/EditPanel/widgets/_components/CodeBlock";
 import { InfoDialog } from "./InfoDialog";
 import { CWidgetContainer, CWidgetContent, CWidgetHeader } from "@/app/(editor)/_components/EditPanel/widgets/_components/CWidget";
 import SliderWithTextInside from "../../../../../components/atoms/SliderWithTextInside";
@@ -69,7 +69,7 @@ function PageContent() {
         <CWidgetContainer>
         <CWidgetContent>
           <CWidgetHeader name="Code" />
-          {/* <CodeBlock initialCode={code} lang="ts" /> */}
+          <CodeBlock initialCode={code} lang="ts" />
         </CWidgetContent>
         </CWidgetContainer>
 

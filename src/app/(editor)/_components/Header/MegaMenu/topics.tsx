@@ -100,7 +100,8 @@ const topics = [
   {
     id: "tweetcrafter",
     name: "TweetCrafter",
-    url: "https://tweetcrafter.com"
+    url: "https://tweetcrafter.com",
+    newTab: true
   }
 ]
 

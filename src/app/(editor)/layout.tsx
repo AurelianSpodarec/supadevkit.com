@@ -6,7 +6,7 @@ import { GeistMono } from 'geist/font/mono';
 
 function EditorLayout({ children }: { children: React.ReactNode }) {
   return (
-    <body className={`overflow-hidden h-full ${orbitron.variable} ${poppins.variable} ${GeistSans.variable} ${GeistMono.variable} font-geistSans`} >
+    <body suppressHydrationWarning className={`overflow-hidden h-full ${orbitron.variable} ${poppins.variable} ${GeistSans.variable} ${GeistMono.variable} font-geistSans`} >
       <AppProvider>
         {children}
       </AppProvider>

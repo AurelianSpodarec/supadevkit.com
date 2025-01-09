@@ -1,4 +1,5 @@
-import topics from "./topics";
+import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 
 import {
   DropdownMenu,
@@ -14,85 +15,36 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import Link from "next/link"
 
-import { useParams, usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
-
-function MenuItem({ selectedTopic, item, handleHoverTopic, segments }) {
-
-  {/* <a href={menuItem.url} key={menuItem.name}  */ }
-
-  return (
-    <button
-      // href={item.url}
-      onMouseEnter={() => handleHoverTopic(item)}
-      className={`h-10 hover:bg-white/10 flex items-center justify-between text-sm px-2 rounded w-full ${selectedTopic?.url === item.url ? "bg-white/10" : ""} `}
-    >
-      <div className="flex items-center space-x-1">
-        {item.icon &&
-          <div className="h-6 w-6">
-            {item.icon}
-          </div>
-        }
-        <span>{item.name}</span>
-      </div>
-
-      {(item.url === segments[0] || item.url === segments[1]) && (
-        <span>
-          <svg
-            width="16"
-            height="16"
-            strokeLinejoin="round"
-            className="ml-2"
-            data-testid="geist-icon"
-            viewBox="0 0 16 16"
-          >
-            <path
-              fill="currentColor"
-              fillRule="evenodd"
-              d="m15.56 4-.53.53-8.793 8.793a1.75 1.75 0 0 1-2.474 0l.53-.53-.53.53L.97 10.53.44 10 1.5 8.94l.53.53 2.793 2.793a.25.25 0 0 0 .354 0L13.97 3.47l.53-.53z"
-              clipRule="evenodd"
-            ></path>
-          </svg>
-        </span>
-      )}
-
-      {item && item.newTab &&
-        <span>
-          <svg className="h-3 w-3 fill-[#e5e7eb]/80" viewBox="0 0 512 512">
-            <path d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32h82.7L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3V192c0 17.7 14.3 32 32 32s32-14.3 32-32V32c0-17.7-14.3-32-32-32zM80 32C35.8 32 0 67.8 0 112v320c0 44.2 35.8 80 80 80h320c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32v112c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16h112c17.7 0 32-14.3 32-32s-14.3-32-32-32z"></path>
-          </svg>
-        </span>
-      }
-    </button>
-  )
-}
+import MenuItem from "./MenuItem";
+import topics from "./topics";
 
 function MegaMenu() {
   const [selectedTopic, setSelectedTopic] = useState({});
-
-  const [isTopicOpen, setIsTopicOpen] = useState(false);
   const [isChapterOpen, setIsChapterOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const pathname = usePathname();
   const segments = pathname.split('/').filter(Boolean);
 
   function handleChapterButton() {
-    setIsTopicOpen(true)
     setIsChapterOpen(true)
     console.log("woppmpm")
   }
 
-  function handleHoverTopic(item) {
-    if (!item.menu && item.newTab) {
-      setSelectedTopic({})
-      setIsChapterOpen(false)
-    } else if (!item.menu) {
+  function handleMenuItemClick() {
+    setIsDropdownOpen(false); // Close the dropdown when an item is clicked
+  }
 
+  function handleHoverTopic(item) {
+    const isMenu = item.menu;
+
+    if (!isMenu) {
+      setSelectedTopic(item.newTab ? {} : selectedTopic);
+      setIsChapterOpen(!item.newTab);
     } else {
-      setSelectedTopic(item)
-      setIsChapterOpen(true)
+      setSelectedTopic(item);
+      setIsChapterOpen(true);
     }
   }
 
@@ -105,21 +57,12 @@ function MegaMenu() {
     setInitialNavigationState()
   }, [pathname]);
 
-  useEffect(() => {
-    console.log(isChapterOpen)
-  }, [selectedTopic])
-
   return (
-    <DropdownMenu onOpenChange={(isOpen) => {
-      if (!isOpen) {
-        setIsChapterOpen(false);
-      }
-    }}>
+    <DropdownMenu open={isDropdownOpen} onOpenChange={setIsDropdownOpen}>
       <DropdownMenuTrigger asChild>
         <div className="flex items-center justify-center">
           <button
             type="button"
-            onClick={() => setIsTopicOpen(true)}
             className="flex items-center space-x-1"
           >
             <div className="h-6 w-6">
@@ -148,7 +91,14 @@ function MegaMenu() {
             ></path>
           </svg>
 
-          <button className="flex items-center space-x-1 z-[99999] relative" onClick={() => handleChapterButton()}>
+          <button
+            className="flex items-center space-x-1 z-[99999] relative"
+            onClick={(e) => {
+              e.stopPropagation(); // Prevent the event from bubbling to the DropdownMenuTrigger
+              handleChapterButton(); // Another specific function
+            }}
+
+          >
             <span className="text-sm font-medium">{segments[1]}</span>
             <div className="py-1 rounded px-0.5 hover:bg-gray-900/90 ">
               <svg
@@ -176,15 +126,19 @@ function MegaMenu() {
 
           <div id="topics" className="my-2 px-2 w-[256px]">
             {topics.map((item) => (
-              <MenuItem key={item.id} item={item} segments={segments} selectedTopic={selectedTopic} handleHoverTopic={handleHoverTopic} />
+              <MenuItem onClick={() => handleMenuItemClick()} key={item.id} item={item} segments={segments} selectedTopic={selectedTopic} handleHoverTopic={handleHoverTopic} />
             ))}
           </div>
 
           {isChapterOpen &&
             <div id="chapters" className="border-l border-l-[#333] my-2 px-2 w-[256px] overflow-y-auto">
-              {selectedTopic && selectedTopic?.menu?.map((menuItem) => (
-                <MenuItem key={menuItem.url} item={menuItem} segments={segments} selectedTopic={selectedTopic} handleHoverTopic={handleHoverTopic} />
-              ))}
+              {selectedTopic && selectedTopic?.menu?.map((menuItem) => {
+                const isSubMenu = selectedTopic?.menu
+                return (
+                  <MenuItem onClick={() => handleMenuItemClick()} key={menuItem.url} item={menuItem} isSubMenu={isSubMenu} segments={segments} selectedTopic={selectedTopic} handleHoverTopic={handleHoverTopic} />
+                )
+              }
+              )}
             </div>
           }
 

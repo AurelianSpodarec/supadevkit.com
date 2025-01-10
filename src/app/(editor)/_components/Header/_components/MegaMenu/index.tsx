@@ -39,7 +39,6 @@ function MenuSubItem({ onClick, onMouseEnter, item, url }: IMenuSubItemProps) {
       {...(url ? { href: url } : { type: "button" })}
       className="cursor-default h-10 hover:bg-white/10 flex items-center justify-between text-sm px-2 rounded w-full text-white"
     >
-
       <div className="flex items-center space-x-1">
         {item.icon && (
           <div className="h-6 w-6">
@@ -69,8 +68,8 @@ function MegaMenu() {
   }
 
   return (
-    <DropdownMenu open={open}>
-      <DropdownMenuTrigger className="relative">
+    <DropdownMenu open={open} onOpenChange={setOpen}>
+      <DropdownMenuTrigger className="relative" asChild>
         <div className="flex items-center align-center">
           <MenuItem
             name="CSS"
@@ -81,7 +80,7 @@ function MegaMenu() {
       </DropdownMenuTrigger>
       <DropdownMenuContent
         align="start"
-        className="flex bg-[#181818] border-[#333] py-0 mx-0 z-20"
+        className="flex bg-[#181818] border-[#333] py-0 mx-0"
         style={{ maxHeight: `calc(100vh - 55px)` }}
       >
         <MenuSubContainer>
@@ -92,7 +91,7 @@ function MegaMenu() {
         {topic && topic?.children && (
           <MenuSubContainer className="border-l border-l-[#333]">
             {topic?.children.map((item) => {
-              return <MenuSubItem item={item} url={`/${topic.url}/${item.url}`} />
+              return <MenuSubItem key={item.url} item={item} onClick={() => setOpen(false)} url={`/${topic.url}/${item.url}`} />
             })}
           </MenuSubContainer>
         )}

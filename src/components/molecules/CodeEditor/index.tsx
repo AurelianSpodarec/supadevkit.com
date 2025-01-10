@@ -1,8 +1,7 @@
 import CodeMirror, { EditorView } from '@uiw/react-codemirror';
-import { html } from '@codemirror/lang-html';
 import { material } from "@uiw/codemirror-theme-material";
 
-function SVGCodeMirror({ value, readOnly }) {
+function CodeEditor({ lang, value, readOnly }) {
   return (
     <CodeMirror
       value={value}
@@ -10,9 +9,9 @@ function SVGCodeMirror({ value, readOnly }) {
       readOnly={readOnly}
       className="h-full w-full wrap text-wrap"
       height="100%"
-      extensions={[html(), EditorView.lineWrapping]}
+      extensions={[lang, EditorView.lineWrapping]}
     />
   )
 }
 
-export default SVGCodeMirror
+export default CodeEditor

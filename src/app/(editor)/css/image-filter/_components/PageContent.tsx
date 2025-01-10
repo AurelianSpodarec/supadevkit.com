@@ -10,6 +10,9 @@ import { CodeBlock } from "@/app/(editor)/_components/EditPanel/widgets/_compone
 import { InfoDialog } from "./InfoDialog";
 import { CWidgetContainer, CWidgetContent, CWidgetHeader } from "@/app/(editor)/_components/EditPanel/widgets/_components/CWidget";
 import SliderWithTextInside from "../../../../../components/atoms/SliderWithTextInside";
+import CodeEditor from "@/components/molecules/CodeEditor";
+
+import { javascript } from "@codemirror/lang-javascript"
 
 function PageContent() {
   const [filters, setFilters] = useState({
@@ -34,10 +37,10 @@ function PageContent() {
     saturate(${filters.saturate}%) 
     sepia(${filters.sepia}%)
   `;
-  
+
   const code = dedent`filter: ${filterStyles};`;
 
-  const updateFilter = (filterName:string, value) => {
+  const updateFilter = (filterName: string, value) => {
     setFilters((prevFilters) => ({
       ...prevFilters,
       [filterName]: value,
@@ -66,11 +69,14 @@ function PageContent() {
       </Content>
 
       <EditPanel>
-        <CWidgetContainer>
-        <CWidgetContent>
-          <CWidgetHeader name="Code" />
-          <CodeBlock initialCode={code} lang="ts" />
-        </CWidgetContent>
+        <CWidgetContainer gutter="none">
+          <CWidgetContent>
+            <CWidgetHeader name="Code" gutter="default" />
+            {/* <CodeBlock initialCode={code} lang="ts" /> */}
+            <div className="max-h-[210px] overflow-y-auto">
+              <CodeEditor lang={javascript()} value={code} readOnly />
+            </div>
+          </CWidgetContent>
         </CWidgetContainer>
 
         <CWidgetContainer>

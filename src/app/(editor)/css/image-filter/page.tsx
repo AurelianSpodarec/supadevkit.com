@@ -7,9 +7,7 @@ export const metadata: Metadata = {
 };
 
 function PageImageFilter() {
- return (
-  <PageContent />
- )
+ return <PageContent />
 }
 
 export default PageImageFilter;

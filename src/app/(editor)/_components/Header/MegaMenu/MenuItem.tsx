@@ -22,7 +22,7 @@ function MenuItem({ onClick, selectedTopic, isSubMenu, item, handleHoverTopic, s
     <Comp
       onClick={onClick}
       onMouseEnter={() => handleHoverTopic(item)}
-      {...(isSubMenu ? { href: item.url } : { type: "button" })}
+      {...(isSubMenu ? { href: "/" + selectedTopic?.url + "/" + item.url } : { type: "button" })}
       className={`h-10 hover:bg-white/10 flex items-center justify-between text-sm px-2 rounded w-full ${selectedTopic?.url === item.url ? "bg-white/10" : ""
         }`}
     >

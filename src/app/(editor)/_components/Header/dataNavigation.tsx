@@ -109,7 +109,7 @@ const dataNavigation:IMenuItem[] = [
       },
       {
         name: "JSON Formatter",
-        url: "https://jsonformatter.org/",
+        url: "https://jsonformatter.org?ref=suaptoolkit.com",
         target: "_blank",
         external: true
       }

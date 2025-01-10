@@ -27,9 +27,20 @@ interface IMenuSubItemProps {
   onClick?: () => void
   onMouseEnter?: () => void
   url?: string
+  topic?: IMenuItem
 }
 
-function MenuSubItem({ onClick, onMouseEnter, item, url }: IMenuSubItemProps) {
+function MenuSubItem({ onClick, onMouseEnter, item, topic }: IMenuSubItemProps) {
+  const externalUrl = item.target === "_blank";
+
+  function getUrl(): string | undefined {
+    if (topic) {
+      return externalUrl ? item.url : `/${topic.url}/${item.url}`;
+    }
+    return externalUrl ? item.url : undefined;
+  };
+
+  const url = getUrl();
   const Component: React.ElementType = url ? Link : 'button';
 
   return (
@@ -60,7 +71,7 @@ function MenuSubItem({ onClick, onMouseEnter, item, url }: IMenuSubItemProps) {
 }
 
 function MegaMenu() {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   const [topic, setTopic] = useState<IMenuItem | null>(null)
 
   function handleMouseEnter(item: IMenuItem) {
@@ -85,13 +96,13 @@ function MegaMenu() {
       >
         <MenuSubContainer>
           {dataNavigation.map((item) => {
-            return <MenuSubItem key={item.url} onMouseEnter={() => handleMouseEnter(item)} item={item} />
+            return <MenuSubItem url={"/"} key={item.url} onMouseEnter={() => handleMouseEnter(item)} item={item} />
           })}
         </MenuSubContainer>
         {topic && topic?.children && (
           <MenuSubContainer className="border-l border-l-[#333]">
             {topic?.children.map((item) => {
-              return <MenuSubItem key={item.url} item={item} onClick={() => setOpen(false)} url={`/${topic.url}/${item.url}`} />
+              return <MenuSubItem key={item.url} item={item} topic={topic} onClick={() => setOpen(false)} />
             })}
           </MenuSubContainer>
         )}

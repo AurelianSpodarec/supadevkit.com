@@ -4,6 +4,7 @@ export interface IMenuItem {
   url?: string
   icon?: React.ReactNode
   target?: "_self" | "_blank"
+  external?: boolean
   children?: IMenuItem[]
   comingSoon?: boolean
   new?: boolean

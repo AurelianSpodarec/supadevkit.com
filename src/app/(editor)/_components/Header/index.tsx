@@ -1,7 +1,7 @@
 'use client'
 
 import Logo from "./_components/Logo";
-import MegaMenu from "./MegaMenu";
+import MegaMenu from "./_components/MegaMenu";
 
 function Header() {
   return (
@@ -10,8 +10,6 @@ function Header() {
       style={{ background: "radial-gradient(circle at 35% 50%, rgba(43, 166, 255, .2) 0, transparent 45%), radial-gradient(circle at 65% 50%, rgba(246, 73, 66, .15) 0, transparent 45%)" }}
     >
       <div className="flex w-full justify-between align-center items-center px-4">
-
-        {/* <div className="fill-white text-white flex items-center space-x-2"> */}
 
           <div className="flex items-center">
             <Logo />

@@ -17,7 +17,7 @@ import {
 } from "@/components/ui/dropdown-menu"
 
 import MenuItem from "./MenuItem";
-import dataNavigation from "../dataNavigation";
+import dataNavigation from "../../dataNavigation";
 
 function MegaMenu() {
   const [selectedTopic, setSelectedTopic] = useState({});

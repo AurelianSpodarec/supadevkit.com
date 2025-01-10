@@ -1,16 +1,12 @@
 import { JSX } from "react";
 import Link from "next/link";
+import { IMenuItem } from "../../IMenuItem";
 
 interface IMenuItemProps {
   onClick: () => void
   selectedTopic: { url: string } | null; // Adjust the type based on your actual structure
   isSubMenu: boolean;
-  item: {
-    url: string;
-    icon?: JSX.Element; // Optional icon
-    name: string;
-    newTab?: boolean; // Optional newTab property
-  };
+  item: IMenuItem
   handleHoverTopic: (item: { url: string; icon?: JSX.Element; name: string; newTab?: boolean }) => void;
   segments: string[];
 }

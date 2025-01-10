@@ -110,7 +110,8 @@ const dataNavigation:IMenuItem[] = [
       {
         name: "JSON Formatter",
         url: "https://jsonformatter.org/",
-        target: "_blank"
+        target: "_blank",
+        external: true
       }
     ]
   },
@@ -119,7 +120,8 @@ const dataNavigation:IMenuItem[] = [
     name: "TweetCrafter",
     url: "https://tweetcrafter.com",
     target: "_blank",
-    comingSoon: true
+    comingSoon: true,
+    external: true
   }
 ]
 

@@ -10,6 +10,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { IMenuItem } from "../../IMenuItem";
+import Link from "next/link";
 
 function MenuSubContainer({ children, className }: { children: React.ReactNode, className?: string }) {
   return (
@@ -25,13 +26,17 @@ interface IMenuSubItemProps {
   item: IMenuItem
   onClick?: () => void
   onMouseEnter?: () => void
+  url?: string
 }
 
-function MenuSubItem({ onClick, onMouseEnter, item }: IMenuSubItemProps) {
+function MenuSubItem({ onClick, onMouseEnter, item, url }: IMenuSubItemProps) {
+  const Component: React.ElementType = url ? Link : 'button';
+
   return (
-    <div
+    <Component
       onClick={onClick}
       onMouseEnter={onMouseEnter}
+      {...(url ? { href: url } : { type: "button" })}
       className="cursor-default h-10 hover:bg-white/10 flex items-center justify-between text-sm px-2 rounded w-full text-white"
     >
 
@@ -51,15 +56,15 @@ function MenuSubItem({ onClick, onMouseEnter, item }: IMenuSubItemProps) {
           </svg>
         </span>
       }
-    </div>
+    </Component>
   )
 }
 
 function MegaMenu() {
   const [open, setOpen] = useState(true);
-  const [topic, setTopic] = useState({})
+  const [topic, setTopic] = useState<IMenuItem | null>(null)
 
-  function handleMouseEnter(item) {
+  function handleMouseEnter(item: IMenuItem) {
     setTopic(item)
   }
 
@@ -84,13 +89,13 @@ function MegaMenu() {
             return <MenuSubItem key={item.url} onMouseEnter={() => handleMouseEnter(item)} item={item} />
           })}
         </MenuSubContainer>
-        {topic && topic?.children &&
+        {topic && topic?.children && (
           <MenuSubContainer className="border-l border-l-[#333]">
             {topic?.children.map((item) => {
-              return <MenuSubItem item={item} />
+              return <MenuSubItem item={item} url={`/${topic.url}/${item.url}`} />
             })}
           </MenuSubContainer>
-        }
+        )}
       </DropdownMenuContent>
     </DropdownMenu>
   )

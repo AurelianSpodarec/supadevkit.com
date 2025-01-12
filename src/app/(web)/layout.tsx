@@ -6,7 +6,7 @@ function WebLayout({ children }: { children: React.ReactNode }) {
     <body>
       <Header />
       {children}
-      <Footer />
+      {/* <Footer /> */}
     </body>
   )
 }

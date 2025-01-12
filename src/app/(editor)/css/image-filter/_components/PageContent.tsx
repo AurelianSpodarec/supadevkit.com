@@ -57,9 +57,8 @@ function PageContent() {
   ]
 
   return (
-    <>
-      {/* <InfoDialog /> */}
-      <Content>
+    <div className="flex w-full flex-col sm:flex-row">
+      <Content className="max-h-[50vh]">
         <img
           src={activePicture}
           className="h-full w-full object-cover"
@@ -83,12 +82,12 @@ function PageContent() {
           <CWidgetContent>
             <CWidgetHeader name="Pictures" />
 
-            <div className="grid grid-cols-3 gap-2">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
               {images.map((image) => {
                 return (
                   <button
                     key={image}
-                    className={`rounded h-[50px] overflow-hidden border-2 border-solid  hover:border-blue-500/70 ${image === activePicture ? "border-blue-500" : "border-white border-opacity-[15%]"} `}
+                    className={`rounded h-[50px] w-full  overflow-hidden border-2 border-solid  hover:border-blue-500/70 ${image === activePicture ? "border-blue-500" : "border-white border-opacity-[15%]"} `}
                     onClick={() => setActivePicture(image)}
                   >
                     <img src={image} className="object-cover h-full w-full" />
@@ -135,7 +134,7 @@ function PageContent() {
         </CWidgetContainer>
 
       </EditPanel>
-    </>
+    </div>
   );
 }
 

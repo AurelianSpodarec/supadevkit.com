@@ -22,79 +22,79 @@ const dataNavigation:IMenuItem[] = [
       </g>
     </svg>,
     children: [
-      {
-        name: "Box Shadow",
-        url: "box-shadow"
-      },
-      {
-        name: "Clip Path",
-        url: "clip-path"
-      },
-      {
-        name: "Custom List",
-        url: "custom-list"
-      },
-      {
-        name: "Fancy Border",
-        url: "fancy-border"
-      },
-      {
-        name: "Flexbox",
-        url: "flexbox"
-      },
-      {
-        name: "Glow",
-        url: "glow"
-      },
-      {
-        name: "Gradient",
-        url: "gradient"
-      },
+      // {
+      //   name: "Box Shadow",
+      //   url: "box-shadow"
+      // },
+      // {
+      //   name: "Clip Path",
+      //   url: "clip-path"
+      // },
+      // {
+      //   name: "Custom List",
+      //   url: "custom-list"
+      // },
+      // {
+      //   name: "Fancy Border",
+      //   url: "fancy-border"
+      // },
+      // {
+      //   name: "Flexbox",
+      //   url: "flexbox"
+      // },
+      // {
+      //   name: "Glow",
+      //   url: "glow"
+      // },
+      // {
+      //   name: "Gradient",
+      //   url: "gradient"
+      // },
       {
         name: "Image Filter",
         url: "image-filter"
       },
-      {
-        name: "Keyframes",
-        url: "keyframes"
-      },
-      {
-        name: "Patterns",
-        url: "patterns"
-      },
-      {
-        name: "Shapes",
-        url: "shapes"
-      },
+      // {
+      //   name: "Keyframes",
+      //   url: "keyframes"
+      // },
+      // {
+      //   name: "Patterns",
+      //   url: "patterns"
+      // },
+      // {
+      //   name: "Shapes",
+      //   url: "shapes"
+      // },
       {
         name: "Swap Image on Hover",
-        url: "swap-impage-on-hover"
+        url: "swap-image-on-hover"
       },
       {
-        name: "Text as Background",
-        url: "text-background"
+        name: "Background in Text",
+        url: "background-in-text"
       },
-      {
-        name: "Transform",
-        url: "transform"
-      },
+      // {
+      //   name: "Transform",
+      //   url: "transform"
+      // },
     ]
   },
-  {
-    id: "react",
-    name: "React",
-    url: "react",
-    icon: <svg className="h-full w-full" fill="none" viewBox="-11 -10.13 22 20.27">
-      <circle r="2" fill="#087ea4" />
-      <g stroke="#087ea4">
-        <ellipse rx="10" ry="4.5" />
-        <ellipse rx="10" ry="4.5" transform="rotate(60)" />
-        <ellipse rx="10" ry="4.5" transform="rotate(120)" />
-      </g>
-    </svg>,
-    children: [],
-    comingSoon: true
-  },
+  // {
+  //   id: "react",
+  //   name: "React",
+  //   url: "react",
+  //   icon: <svg className="h-full w-full" fill="none" viewBox="-11 -10.13 22 20.27">
+  //     <circle r="2" fill="#087ea4" />
+  //     <g stroke="#087ea4">
+  //       <ellipse rx="10" ry="4.5" />
+  //       <ellipse rx="10" ry="4.5" transform="rotate(60)" />
+  //       <ellipse rx="10" ry="4.5" transform="rotate(120)" />
+  //     </g>
+  //   </svg>,
+  //   children: [],
+  //   comingSoon: true
+  // },
   {
     id: "util",
     name: "Utilities",

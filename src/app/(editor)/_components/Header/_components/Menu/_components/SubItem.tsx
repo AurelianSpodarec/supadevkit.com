@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { IMenuItem } from "../../../IMenuItem"
+import { IMenuItem } from "../../../../IMenuItem"
 
 interface IMenuSubItemProps {
   item: IMenuItem

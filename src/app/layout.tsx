@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { GoogleAnalytics } from '@next/third-parties/google'
 
 import './../styles/styles.scss'
 
@@ -11,6 +12,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en" suppressHydrationWarning>
       {children}
+      <GoogleAnalytics gaId="G-19J01JG9FG" />
     </html>
   );
 }

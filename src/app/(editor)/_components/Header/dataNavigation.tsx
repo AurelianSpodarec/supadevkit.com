@@ -66,14 +66,14 @@ const dataNavigation:IMenuItem[] = [
       //   name: "Shapes",
       //   url: "shapes"
       // },
-      {
-        name: "Swap Image on Hover",
-        url: "swap-image-on-hover"
-      },
-      {
-        name: "Background in Text",
-        url: "background-in-text"
-      },
+      // {
+      //   name: "Swap Image on Hover",
+      //   url: "swap-image-on-hover"
+      // },
+      // {
+      //   name: "Background in Text",
+      //   url: "background-in-text"
+      // },
       // {
       //   name: "Transform",
       //   url: "transform"
@@ -107,22 +107,22 @@ const dataNavigation:IMenuItem[] = [
         name: "SVG to JSX",
         url: "svg2jsx"
       },
-      {
-        name: "JSON Formatter",
-        url: "https://jsonformatter.org?ref=suaptoolkit.com",
-        target: "_blank",
-        external: true
-      }
+      // {
+      //   name: "JSON Formatter",
+      //   url: "https://jsonformatter.org?ref=suaptoolkit.com",
+      //   target: "_blank",
+      //   external: true
+      // }
     ]
   },
-  {
-    id: "tweetcrafter",
-    name: "TweetCrafter",
-    url: "https://tweetcrafter.com",
-    target: "_blank",
-    comingSoon: true,
-    external: true
-  }
+  // {
+  //   id: "tweetcrafter",
+  //   name: "TweetCrafter",
+  //   url: "https://tweetcrafter.com",
+  //   target: "_blank",
+  //   comingSoon: true,
+  //   external: true
+  // }
 ]
 
 export default dataNavigation

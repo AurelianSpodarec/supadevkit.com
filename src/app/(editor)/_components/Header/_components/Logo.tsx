@@ -17,6 +17,7 @@ function Logo() {
       <span className="hidden lg:block font-bold text-md lg:text-xl font-geistMono">
         SupaToolkit
       </span>
+      <span className="text-xs bg-purple-600 text-gray-100 rounded px-[2px] font-semibold mt-auto mb-1">BETA</span>
     </Link>
   )
 }

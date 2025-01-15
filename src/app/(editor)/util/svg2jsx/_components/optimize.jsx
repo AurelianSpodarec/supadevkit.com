@@ -1,27 +1,4 @@
-// import { optimize } from 'svgo';
 import { optimize } from "svgo/dist/svgo.browser";
-// import { transform } from '@svgr/core';
-
-// import convert from "@svgr/core/lib/convert";
-// import wop from "@svgr/babel-plugin-transform-svg-component"
-// import JSXPlugin from "@svgr/plugin-jsx";
-
-// const wop = await new Promise((resolve) => {
-//   convert(svg, {
-//     prettier: false,
-//     svgo: false,
-//     jsxRuntime: "automatic",
-//     plugins: [JSXPlugin],
-//   })
-//     .then((jsx) => {
-//       console.log(jsx);
-//       resolve(jsx); // Resolve the promise with the jsx value
-//     })
-//     .catch((error) => {
-//       console.error(error); // Handle any errors
-//       resolve(null); // Optionally resolve with null or throw an error
-//     });
-// });
 
 export const optimizeSvg = (svgString, options) => {
   const { removeComments, preserveLegalComments } = options;

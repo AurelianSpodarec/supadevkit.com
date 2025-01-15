@@ -18,17 +18,20 @@ const nextConfig: NextConfig = {
     ];
   },
   transpilePackages: ["svgo"],
-  // resolve: {
-  //   fallback: {
-  //     fs: false, // Disable fs or provide a mock implementation if needed
-  //   },
-  // },
-  // plugins: [
-  //   new webpack.ProvidePlugin({
-  //     process: 'process/browser', // Include process polyfill if needed
-  //     Buffer: ['buffer', 'Buffer'], // Include Buffer polyfill if needed
-  //   }),
-  // ],
+  webpack: (config, { isServer }) => {
+    if (!isServer) {
+      config.resolve = {
+        ...config.resolve,
+        fallback: {
+          ...config.resolve.fallback,
+          fs: false,
+          module: false,
+        },
+      };
+    }
+
+    return config;
+  },
 };
 
 export default nextConfig

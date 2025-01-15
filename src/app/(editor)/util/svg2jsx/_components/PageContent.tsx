@@ -15,6 +15,20 @@ const defaultOptions = {
   optimizePaths: false,
 };
 
+
+
+
+
+
+
+import convert from "@svgr/core/lib/convert";
+import JSXPlugin from "@svgr/plugin-jsx";
+
+import { html } from '@codemirror/lang-html';
+import { javascript } from "@codemirror/lang-javascript"
+
+
+
 interface IPlaygroundProps {
   children: React.ReactNode
 }
@@ -92,6 +106,31 @@ function PageContent() {
       console.log("Failed to optimize SVG. Please check your input.", err);
     }
   };
+
+
+  useEffect(() => {
+    const wop = new Promise((resolve) => {
+      convert(initialCode, {
+        prettier: false,
+        svgo: false,
+        jsxRuntime: "automatic",
+        plugins: [JSXPlugin],
+      })
+        .then((jsx) => {
+          console.log(jsx);
+          resolve(jsx); // Resolve the promise with the jsx value
+        })
+        .catch((error) => {
+          console.error(error); // Handle any errors
+          resolve(null); // Optionally resolve with null or throw an error
+        });
+    });
+
+    wop.then((result) => {
+      setConvertedCode(result);
+    });
+  }, [initialCode])
+
 
   // Use Effects
   // ------------------------------------------------
@@ -171,6 +210,7 @@ function PageContent() {
           <SVGCodeMirror
             value={initialCode}
             onChange={setInitialCode}
+            lang={html()}
           />
         </section>
 
@@ -254,7 +294,7 @@ function PageContent() {
             {isPreview ? (
               <div className="h-full w-full flex items-center align-center justify-center max-w-[200px]" dangerouslySetInnerHTML={{ __html: convertedCode }} />
             ) : (
-              <SVGCodeMirror value={convertedCode} readOnly={true} />
+              <SVGCodeMirror value={convertedCode} readOnly={true} lang={javascript()} />
             )}
           </div>
         </section>

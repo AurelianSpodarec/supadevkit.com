@@ -1,4 +1,5 @@
 import type { NextConfig } from "next"
+import { webpack } from "next/dist/compiled/webpack/webpack";
 
 const nextConfig: NextConfig = {
   typescript: {
@@ -16,14 +17,18 @@ const nextConfig: NextConfig = {
       },
     ];
   },
-  webpack: (config) => {
-    config.resolve.fallback = {
-      fs: false,
-      os: false,
-      path: false,
-    };
-    return config;
-  },
+  transpilePackages: ["svgo"],
+  // resolve: {
+  //   fallback: {
+  //     fs: false, // Disable fs or provide a mock implementation if needed
+  //   },
+  // },
+  // plugins: [
+  //   new webpack.ProvidePlugin({
+  //     process: 'process/browser', // Include process polyfill if needed
+  //     Buffer: ['buffer', 'Buffer'], // Include Buffer polyfill if needed
+  //   }),
+  // ],
 };
 
 export default nextConfig

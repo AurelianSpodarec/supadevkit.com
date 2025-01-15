@@ -1,18 +1,26 @@
-import CodeMirror, { EditorView } from '@uiw/react-codemirror';
-import { material } from "@uiw/codemirror-theme-material";
+import ReactCodeMirror, { EditorView, ReactCodeMirrorProps } from '@uiw/react-codemirror';
+// import { copilot } from "@uiw/codemirror-theme-copilot";
+import { andromeda } from "@uiw/codemirror-theme-andromeda"
+// import { material } from "@uiw/codemirror-theme-material";
+import { Extension } from '@codemirror/state';
 
-function CodeEditor({ lang, value, readOnly, onChange }) {
+export interface ICodeEditorProps extends Omit<ReactCodeMirrorProps, 'lang'> {
+  lang: Extension
+}
+
+function CodeEditor({ lang, value, readOnly, onChange, ...props }: ICodeEditorProps) {
   return (
-    <CodeMirror
+    <ReactCodeMirror
+      {...props}
       value={value}
-      theme={material}
+      theme={andromeda}
       readOnly={readOnly}
       className="h-full w-full wrap text-wrap"
       height="100%"
       onChange={onChange}
       extensions={[lang, EditorView.lineWrapping]}
     />
-  )
+  );
 }
 
-export default CodeEditor
+export default CodeEditor;

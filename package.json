@@ -18,6 +18,8 @@
     "@radix-ui/react-slider": "^1.2.2",
     "@reduxjs/toolkit": "^2.5.0",
     "@svgr/core": "^8.1.0",
+    "@uiw/codemirror-theme-andromeda": "^4.23.7",
+    "@uiw/codemirror-theme-copilot": "^4.23.7",
     "@uiw/codemirror-theme-material": "^4.23.7",
     "@uiw/codemirror-theme-monokai": "^4.23.7",
     "@uiw/react-codemirror": "^4.23.7",

@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Metadata } from "next";
-import PageContent from "./PageContent";
+import PageContent from "./_components/PageContent";
 
 export const metadata: Metadata = {
   title: "SVG2JSX | SupaToolkit",

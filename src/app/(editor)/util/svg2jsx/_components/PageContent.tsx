@@ -2,9 +2,18 @@
 
 import { useEffect, useState } from "react";
 
-import SVGCodeMirror from "./SVGCodeMirror"
+import convert from "@svgr/core/lib/convert";
+import JSXPlugin from "@svgr/plugin-jsx";
 import { optimizeSvg } from './optimize';
-import SvgOptions from "./SvgOptions";
+
+import { html } from '@codemirror/lang-html';
+import { javascript } from "@codemirror/lang-javascript"
+
+import PlaygroundHeader from "./PlaygroundHeader";
+import SVGCodeMirror from "./SVGCodeMirror"
+
+import CONVERT_OPTIONS from "./CONVERT_OPTIONS";
+import SVG_OPTIONS from "./SvgOptions";
 
 const defaultOptions = {
   removeComments: true,
@@ -14,52 +23,6 @@ const defaultOptions = {
   minifySVG: false,
   optimizePaths: false,
 };
-
-
-
-
-
-
-
-import convert from "@svgr/core/lib/convert";
-import JSXPlugin from "@svgr/plugin-jsx";
-
-import { html } from '@codemirror/lang-html';
-import { javascript } from "@codemirror/lang-javascript"
-
-
-
-interface IPlaygroundProps {
-  children: React.ReactNode
-}
-
-function PlaygroundHeader({ name, children }: IPlaygroundProps) {
-  return (
-    <header className="border-b border-b-[#3f3f46] bg-[#18181b] px-2">
-      {/* {name} */}
-      {children}
-    </header>
-  )
-}
-
-const CONVERT_OPTIONS = [
-  {
-    id: "jsx",
-    name: "JSX",
-  },
-  {
-    id: "react",
-    name: "React"
-  },
-  {
-    id: "reactNative",
-    name: "React Native"
-  },
-  {
-    id: "dataURI",
-    name: "Data URI"
-  }
-]
 
 function PageContent() {
   const [initialCode, setInitialCode] = useState(`<?xml version="1.0" encoding="UTF-8"?>
@@ -107,11 +70,10 @@ function PageContent() {
     }
   };
 
-
   useEffect(() => {
     const wop = new Promise((resolve) => {
       convert(initialCode, {
-        prettier: false,
+        prettier: true,
         svgo: false,
         jsxRuntime: "automatic",
         plugins: [JSXPlugin],
@@ -131,7 +93,6 @@ function PageContent() {
     });
   }, [initialCode])
 
-
   // Use Effects
   // ------------------------------------------------
 
@@ -148,65 +109,65 @@ function PageContent() {
               <span className=" text-xs font-semibold py-2 uppercase">
                 SVG Input
               </span>
-              <button>
-                <svg className="h-4 w-4" xmlns='http://www.w3.org/2000/svg' fill='none'>
-                  <g
-                    stroke='currentColor'
-                    strokeLinecap='round'
-                    strokeLinejoin='round'
-                    strokeWidth='1.5'
-                    clipPath='url(#a)'
-                  >
-                    <path d='M3.29 9.91a1.05 1.05 0 0 1-.21 1.157l-.037.038a1.272 1.272 0 1 0 1.8 1.801l.039-.038a1.05 1.05 0 0 1 1.158-.21 1.05 1.05 0 0 1 .636.961v.108a1.273 1.273 0 0 0 2.546 0v-.057a1.05 1.05 0 0 1 .687-.96 1.05 1.05 0 0 1 1.158.21l.038.037a1.272 1.272 0 0 0 2.175-.9 1.27 1.27 0 0 0-.374-.9l-.038-.039a1.05 1.05 0 0 1-.21-1.158 1.05 1.05 0 0 1 .961-.636h.108a1.273 1.273 0 0 0 0-2.546h-.057a1.05 1.05 0 0 1-.96-.687 1.05 1.05 0 0 1 .21-1.158l.037-.038a1.272 1.272 0 1 0-1.8-1.801l-.039.038a1.05 1.05 0 0 1-1.158.21h-.05a1.05 1.05 0 0 1-.637-.961v-.108a1.273 1.273 0 0 0-2.546 0v.057a1.05 1.05 0 0 1-.636.96 1.05 1.05 0 0 1-1.158-.21l-.038-.037a1.273 1.273 0 1 0-1.801 1.8l.038.039a1.05 1.05 0 0 1 .21 1.158v.05a1.05 1.05 0 0 1-.961.637h-.108a1.273 1.273 0 0 0 0 2.546h.057a1.05 1.05 0 0 1 .96.636Z'></path>
-                    <path d='M8 10a2 2 0 1 1 0-4 2 2 0 0 1 0 4'></path>
-                  </g>
-                  <defs>
-                    <clipPath id='a'>
-                      <path fill='currentColor' d='M0 0h16v16H0z'></path>
-                    </clipPath>
-                  </defs>
-                </svg>
-              </button>
-            </div>
-          </PlaygroundHeader>
-          {/* <header className="flex h-14 justify-between items-center">
-            <button onClick={() => resetOptions()}>Reset Default</button>
-            <div className="ml-auto">
-              <button onClick={() => toggleOptionMenu()} className={`p-1 rounded ${optionMenuOpen ? "bg-orange-500" : ""}`}>
-                Options
-              </button>
+              <div className="ml-auto">
+                <button onClick={() => toggleOptionMenu()} className={`p-1 rounded ${optionMenuOpen ? "bg-orange-500" : ""}`}>
+                  <svg className="h-4 w-4" xmlns='http://www.w3.org/2000/svg' fill='none'>
+                    <g
+                      stroke='currentColor'
+                      strokeLinecap='round'
+                      strokeLinejoin='round'
+                      strokeWidth='1.5'
+                      clipPath='url(#a)'
+                    >
+                      <path d='M3.29 9.91a1.05 1.05 0 0 1-.21 1.157l-.037.038a1.272 1.272 0 1 0 1.8 1.801l.039-.038a1.05 1.05 0 0 1 1.158-.21 1.05 1.05 0 0 1 .636.961v.108a1.273 1.273 0 0 0 2.546 0v-.057a1.05 1.05 0 0 1 .687-.96 1.05 1.05 0 0 1 1.158.21l.038.037a1.272 1.272 0 0 0 2.175-.9 1.27 1.27 0 0 0-.374-.9l-.038-.039a1.05 1.05 0 0 1-.21-1.158 1.05 1.05 0 0 1 .961-.636h.108a1.273 1.273 0 0 0 0-2.546h-.057a1.05 1.05 0 0 1-.96-.687 1.05 1.05 0 0 1 .21-1.158l.037-.038a1.272 1.272 0 1 0-1.8-1.801l-.039.038a1.05 1.05 0 0 1-1.158.21h-.05a1.05 1.05 0 0 1-.637-.961v-.108a1.273 1.273 0 0 0-2.546 0v.057a1.05 1.05 0 0 1-.636.96 1.05 1.05 0 0 1-1.158-.21l-.038-.037a1.273 1.273 0 1 0-1.801 1.8l.038.039a1.05 1.05 0 0 1 .21 1.158v.05a1.05 1.05 0 0 1-.961.637h-.108a1.273 1.273 0 0 0 0 2.546h.057a1.05 1.05 0 0 1 .96.636Z'></path>
+                      <path d='M8 10a2 2 0 1 1 0-4 2 2 0 0 1 0 4'></path>
+                    </g>
+                    <defs>
+                      <clipPath id='a'>
+                        <path fill='currentColor' d='M0 0h16v16H0z'></path>
+                      </clipPath>
+                    </defs>
+                  </svg>
+                </button>
 
-              <div className={`${optionMenuOpen ? "block" : "block"} top-8 absolute p-4 z-10 left-0 right-0`}>
-                <div className="relative">
+                <div className={`${optionMenuOpen ? "block" : "hidden"} overflow-hidden top-8 absolute p-4 z-10 left-0 h-full right-0`}>
+                  <div className="relative h-full max-h-[650px] overflow-hidden">
 
-                  <div className="rounded border border-gray-700 shadow p-6 bg-[#2e3138]">
-                    <div>
-                      <span>Optimize</span>
-                      <div className="flex flex-col h-[570px] flex-wrap items-center">
-                        {SvgOptions.map(group => (
-                          <>
-                            {group.options.map((option) => (
-                              <div className="mb-2 w-1/2 inline-flex flex-wrap flex-row text-xs">
-                                <label key={option.id}>
-                                  <input
-                                    type="checkbox"
-                                    checked={option[option.id]}
-                                    onChange={() => toggleOption(option.id)}
-                                  />
-                                  {option.name}
-                                </label>
-                              </div>
+                    <div className="rounded relative border border-gray-700 shadow bg-[#23262e] rounded overflow-x-hidden h-full overflow-y-auto">
+                      <div className="absolute top-0 right-0 bottom-0 left-0 h-full">
+
+                        <div className=" p-6">
+
+                          <span>Optimize</span>
+                          <div className="flex flex-col h-[570px] flex-wrap items-center">
+                            {SVG_OPTIONS.map(group => (
+                              <>
+                                {group.options.map((option) => (
+                                  <div className="mb-2 w-1/2 inline-flex flex-wrap flex-row text-xs">
+                                    <label key={option.id}>
+                                      <input
+                                        type="checkbox"
+                                        checked={option[option.id]}
+                                        onChange={() => toggleOption(option.id)}
+                                      />
+                                      {option.name}
+                                    </label>
+                                  </div>
+                                ))}
+                                <div className="min-h-4"></div>
+                              </>
                             ))}
-                            <div className="min-h-4"></div>
-                          </>
-                        ))}
+                          </div>
+                        </div>
+
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
+
             </div>
-          </header> */}
+          </PlaygroundHeader>
           <SVGCodeMirror
             value={initialCode}
             onChange={setInitialCode}

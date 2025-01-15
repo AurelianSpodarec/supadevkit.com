@@ -8,16 +8,20 @@ interface IProps {
 function EditPanel({ children, code }: IProps) {
 
   return (
-    <aside className="w-[420px] bg-[#1c1c1e] overflow-auto h-full">
+    <aside
+      className="w-[420px] bg-[#18181b] overflow-auto h-full"
+      // style={{ background: "radial-gradient(circle at -6% -16%, rgb(55 22 78 / 54%) 0, #fd000003 45%), radial-gradient(circle at 65% 50%, rgb(27 24 27) 0, #18181b 45%)" }}
+      style={{ background: "radial-gradient(circle at -3% 4%, rgb(31 12 43) 0, #fd000003 45%), radial-gradient(circle at 65% 50%, rgb(27 24 27) 0, #070206 45%)" }}
+    >
       {/* <div> */}
 
-        {/* <section> */}
-          {/* <header className="flex items-center justify-between"> */}
+      {/* <section> */}
+      {/* <header className="flex items-center justify-between"> */}
 
-            {/* <div> */}
-              {/* CSS | TailwindCSS | Styles */}
+      {/* <div> */}
+      {/* CSS | TailwindCSS | Styles */}
 
-              {/* <button>
+      {/* <button>
               <svg
                 className="w-6"
                 width="40"
@@ -32,23 +36,23 @@ function EditPanel({ children, code }: IProps) {
               </svg>
               <span className="sr-only">TailwindCSS</span>
             </button> */}
-            {/* </div>
+      {/* </div>
             <div>
               Copy Code
               <div>
 
               </div> */}
-              {/* <div>
+      {/* <div>
             Options: Align: Top, Bottom, Left, 
           </div> */}
-            {/* </div>
+      {/* </div>
           </header> */}
-          {/* <div className="relative"> */}
-            {/* <button className="absolute inset-0 z-10">
+      {/* <div className="relative"> */}
+      {/* <button className="absolute inset-0 z-10">
               <span className="sr-only">Copy code</span>
             </button> */}
-            {/* <div className="border"> */}
-              {/* <Editor
+      {/* <div className="border"> */}
+      {/* <Editor
                 value={code}
                 onValueChange={code => setCode(code)}
                 highlight={code => highlight(code, languages.css, 'css')}
@@ -58,14 +62,14 @@ function EditPanel({ children, code }: IProps) {
                   fontSize: 12,
                 }}
               /> */}
-            {/* </div/> */}
-          {/* </div> */}
-        {/* </section> */}
+      {/* </div/> */}
+      {/* </div> */}
+      {/* </section> */}
 
       {/* </div> */}
       {/* <section> */}
-        {/* Configuration */}
-        {children}
+      {/* Configuration */}
+      {children}
       {/* </section> */}
       {/* {Object.keys(filters).map((filterName) => (
         <div key={filterName} style={{ margin: "10px 0" }}>

@@ -10,7 +10,9 @@ function Header() {
   return (
     <header
       className="h-[55px] flex w-full align-center"
-      style={{ background: "radial-gradient(circle at 35% 50%, rgba(43, 166, 255, .2) 0, transparent 45%), radial-gradient(circle at 65% 50%, rgba(246, 73, 66, .15) 0, transparent 45%)" }}
+      // style={{ background: "radial-gradient(circle at 35% 50%, rgba(43, 166, 255, .2) 0, transparent 45%), radial-gradient(circle at 65% 50%, rgba(246, 73, 66, .15) 0, transparent 45%)" }}
+      // style={{ background: "radial-gradient(circle at 35% 50%, rgb(35 38 46 / 92%) 0, transparent 45%), radial-gradient(circle at 65% 50%, rgb(106 32 170 / 44%) 0, #000000 45%)" }}
+      style={{ background: "radial-gradient(circle at 35% 50%, rgb(0 4 47 / 53%) 0, #fd000003 45%), radial-gradient(circle at 65% 50%, rgb(106 32 170 / 24%) 0, #000000 45%)" }}
     >
       <div className="flex w-full justify-between align-center items-center px-4">
 

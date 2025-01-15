@@ -36,6 +36,7 @@
     "prismjs": "^1.29.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-native-svg": "^5.5.0",
     "react-redux": "^9.2.0",
     "rehype-prism": "^2.3.3",
     "sass": "^1.82.0",

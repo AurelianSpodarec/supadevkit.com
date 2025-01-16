@@ -15,6 +15,9 @@ import SVGCodeMirror from "./SVGCodeMirror"
 import CONVERT_OPTIONS from "./CONVERT_OPTIONS";
 import SVG_OPTIONS from "./SvgOptions";
 
+interface IDefaultOptions {
+}
+
 const defaultOptions = {
   removeComments: true,
   removeTitle: true,
@@ -24,31 +27,38 @@ const defaultOptions = {
   optimizePaths: false,
 };
 
+type TConvertToOptions = "html" | "react" | "data-uri";
 
 function PageContent() {
-  const [initialCode, setInitialCode] = useState(`<?xml version="1.0" encoding="UTF-8"?>
+  const [initialCode, setInitialCode] = useState<string>(`<?xml version="1.0" encoding="UTF-8"?>
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M234.5 5.7c13.9-5 29.1-5 43.1 0l192 68.6C495 83.4 512 107.5 512 134.6l0 242.9c0 27-17 51.2-42.5 60.3l-192 68.6c-13.9 5-29.1 5-43.1 0l-192-68.6C17 428.6 0 404.5 0 377.4L0 134.6c0-27 17-51.2 42.5-60.3l192-68.6zM256 66L82.3 128 256 190l173.7-62L256 66zm32 368.6l160-57.1 0-188L288 246.6l0 188z"/></svg>`); // Replace with your SVG code
-  const [optimizedSvg, setOptimizedSvg] = useState("")
+  const [optimizedSvg, setOptimizedSvg] = useState<string>("")
 
-  const [convertTo, setConvertTo] = useState<"html" | "react" | "data-uri">("react")
-  const [convertedCode, setConvertedCode] = useState("");
+  const [convertTo, setConvertTo] = useState<TConvertToOptions>("react")
+  const [convertedCode, setConvertedCode] = useState<string>("");
+  const [errorConverting, setErrorConverting] = useState(null) //if message from error, it means something is off 
 
-  const [options, setOptions] = useState(defaultOptions);
-  const [optionMenuOpen, setOptionMenuOpen] = useState(false);
+  const [options, setOptions] = useState<IDefaultOptions>(defaultOptions);
+  const [optionMenuOpen, setOptionMenuOpen] = useState<boolean>(false);
 
-  const [dataLoading, setDataLoading] = useState(false);
-  const [isPreview, setIsPreview] = useState(false)
+  const [dataLoading, setDataLoading] = useState<boolean>(false);
+  const [isPreview, setIsPreview] = useState<boolean>(false);
 
   const editorLang = {
     html: html,
     react: javascript
   }
-  //TODO: Output: HTML, JSX, React, React Native, Data URI, PNG
 
   // Handlers
-  function handlerSetConvertTo(id) {
+  // ------------------------------------------------
+
+  function handlerSetConvertTo(id: TConvertToOptions) {
     setConvertTo(id)
     setIsPreview(false)
+  }
+
+  function handleCopyCode() {
+    navigator.clipboard.writeText(convertedCode)
   }
 
   // Functions
@@ -69,20 +79,17 @@ function PageContent() {
     setOptions([...defaultOptions]);
   }
 
+  // Convert Functions
+  // ------------------------------------------------
+
   function optimizeSvgHtml(svg) {
     try {
       return optimizeSvg(svg, options);
     } catch (err) {
       console.log("Failed to optimize SVG. Please check your input.", err);
-      return "Failed to optimize SVG"
+      return { err }
     }
-
   }
-
-  // Initial Code: HTML
-  // Used for SVG: Updates but doesn't convert
-  // Optimized Code: 
-  // Converted Code: (if HTML, sow optimized code), React
 
   function convertToReact(svg) {
     const wop = new Promise((resolve) => {
@@ -93,12 +100,12 @@ function PageContent() {
         plugins: [JSXPlugin],
       })
         .then((jsx) => {
-          console.log(jsx);
-          resolve(jsx); // Resolve the promise with the jsx value
+          console.log(jsx)
+          resolve(jsx)
         })
         .catch((error) => {
-          console.error(error); // Handle any errors
-          resolve(null); // Optionally resolve with null or throw an error
+          console.log("covertToReact error", error)
+          // resolve(jsx)
         });
     });
 
@@ -107,41 +114,34 @@ function PageContent() {
     });
   }
 
-
   function handleConversion(svg) {
-    const optSvg = optimizeSvgHtml(initialCode)
     setDataLoading(true)
+    const optSvg = optimizeSvgHtml(initialCode)
 
-    console.log("opppp", optSvg)
-
-    let result = ""
-    switch (convertTo) {
-      case "html":
-        result = optSvg;
-        break;
-      case "react":
-        result = convertToReact(optSvg);
-        break;
-      // case "data-uri":
-      //   result = convertToDataUri(optSvg);
-      //   break;
+    if (optSvg?.err) {
+      setErrorConverting(optSvg.err.reason)
+    } else {
+      setErrorConverting(null)
+      let result = ""
+      switch (convertTo) {
+        case "html":
+          result = optSvg;
+          break;
+        case "react":
+          result = convertToReact(optSvg);
+          break;
+      }
+      setConvertedCode(result);
     }
-    setConvertedCode(result);
-    setDataLoading(false);
-    // optimize the SVG
 
-    // conver to react
-    // display optimized html
-    // convert to data-uri
+    console.log("EEEEEEE", optSvg?.err?.reason)
+    setDataLoading(false);
   }
 
   // Use Effects
   // ------------------------------------------------
-
   useEffect(() => {
     if (initialCode) {
-      // const svg = optimizeSvgHtml(initialCode)
-      // setOptimizedSvg(svg)
       handleConversion(initialCode)
     }
   }, [initialCode, options, convertTo])
@@ -155,6 +155,7 @@ function PageContent() {
               <span className=" text-xs font-semibold py-2 uppercase">
                 SVG Input
               </span>
+
               <div className="ml-auto">
                 <button onClick={() => toggleOptionMenu()} className={`p-1 rounded ${optionMenuOpen ? "bg-orange-500" : ""}`}>
                   <svg className="h-4 w-4" xmlns='http://www.w3.org/2000/svg' fill='none'>
@@ -175,6 +176,7 @@ function PageContent() {
                     </defs>
                   </svg>
                 </button>
+
 
                 <div className={`${optionMenuOpen ? "block" : "hidden"} overflow-hidden top-8 absolute p-4 z-10 left-0 h-full right-0`}>
                   <div className="relative h-full max-h-[650px] overflow-hidden">
@@ -214,6 +216,11 @@ function PageContent() {
 
             </div>
           </PlaygroundHeader>
+          {errorConverting &&
+            <div className="flex items-center text-sm py-1 bg-red-700/50 px-2">
+              <span>Error: {errorConverting}</span>
+            </div>
+          }
           <SVGCodeMirror
             value={initialCode}
             onChange={setInitialCode}
@@ -221,12 +228,12 @@ function PageContent() {
           />
         </section>
 
-        <section className={`flex flex-col lg:w-1/2 h-full border border-l-0 border-[#3f3f46] ${dataLoading ? 'opacity-50' : ''}`}>
+        <section className={`flex flex-col lg:w-1/2 h-full border border-l-0 border-[#3f3f46] ${errorConverting ? "opacity-50" : ""} ${dataLoading ? 'opacity-50' : ''}`}>
           <PlaygroundHeader>
             <div className="flex items-center justify-between">
 
               <div className="flex items-center text-sm space-x-2">
-                <span className=" text-xs font-semibold py-2 uppercase">
+                <span className=" text-xs font-semibold py-2 opacity-50 uppercase">
                   Output
                 </span>
                 <div className="space-x-2">
@@ -253,7 +260,7 @@ function PageContent() {
               </div>
 
               <div className="flex items-center text-sm space-x-4">
-                <button className="flex items-center space-x-1 border border-gray-700/80 bg-gray-700/30 rounded px-2 py-0.5">
+                <button onClick={() => handleCopyCode()} className="flex items-center space-x-1 border border-gray-700/80 bg-gray-700/30 rounded px-2 py-0.5">
                   <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none'>
                     <path
                       stroke='#6E7687'
@@ -301,8 +308,11 @@ function PageContent() {
             {isPreview ? (
               <div className="h-full w-full flex items-center align-center justify-center max-w-[200px]" dangerouslySetInnerHTML={{ __html: initialCode }} />
             ) : (
-
-              <SVGCodeMirror value={convertedCode} readOnly={true} lang={editorLang[convertTo]()} />
+              errorConverting ? (
+                <div className="h-full w-full"><SVGCodeMirror className="h-full w-full" value={""} readOnly={true} lang={html()} /></div>
+              ) : (
+                <SVGCodeMirror value={convertedCode} readOnly={true} lang={editorLang[convertTo]()} />
+              )
             )}
           </div>
         </section>

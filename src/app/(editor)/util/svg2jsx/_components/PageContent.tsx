@@ -279,7 +279,9 @@ function PageContent() {
                       opacity='0.4'
                     ></path>
                   </svg>
-                  Copy
+                  <span>Copy</span>
+                  {/* Copy */}
+                  {/* Copied! - 2sec and go back to "Copy" */}
                 </button>
                 <button>
                   <svg className="h-4 w-4" xmlns='http://www.w3.org/2000/svg' fill='none'>

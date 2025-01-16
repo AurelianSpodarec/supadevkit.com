@@ -4,7 +4,7 @@ import { GoogleAnalytics } from '@next/third-parties/google'
 import './../styles/styles.scss'
 
 export const metadata: Metadata = {
-  title: "Supatoolkit",
+  title: "SupaDevkit",
   description: "Developer super toolkit to help with tedious CSS, JavaScript etc tasksOne toolkit for all.",
 };
 

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Logo from "./_components/Logo";
 import DesktopMenu from "./_components/Menu/DesktopMenu";
+import Link from "next/link";
 
 function Header() {
   const [mobileOpen, setMobileOpen] = useState(false)
@@ -54,7 +55,7 @@ function Header() {
             <span className="text-sm">About Image Filter</span>
           </button> */}
 
-          {/* <button className="inline-flex items-center gap-2 justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-indigo-500 disabled:pointer-events-none disabled:opacity-50 bg-[#222223] text-secondary-foreground border border-[#444] hover:bg-[#222223] px-4 py-2.5">
+          <Link href="https://discord.gg/hpAWb4X4" target="blank" className="inline-flex items-center gap-2 justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-indigo-500 disabled:pointer-events-none disabled:opacity-50 bg-[#222223] text-secondary-foreground border border-[#444] hover:bg-[#222223] px-4 py-2.5">
             <svg className="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 127.14 96.36">
               <g>
                 <g data-name="Discord Logos">
@@ -67,7 +68,7 @@ function Header() {
               </g>
             </svg>
             <span className="text-sm">Join Community</span>
-          </button> */}
+          </Link>
 
           {/* <svg className="h-5 w-5 fill-white" viewBox="0 0 448 512">
             <path d="M0 96c0-17.7 14.3-32 32-32h384c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32m0 160c0-17.7 14.3-32 32-32h384c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32m448 160c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32h384c17.7 0 32 14.3 32 32"></path>

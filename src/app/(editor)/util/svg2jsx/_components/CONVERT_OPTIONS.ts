@@ -16,7 +16,7 @@ const CONVERT_OPTIONS = [
   //   name: "React Native"
   // },
   // {
-  //   id: "dataURI",
+  //   id: "data-uri",
   //   name: "Data URI"
   // }
 ]

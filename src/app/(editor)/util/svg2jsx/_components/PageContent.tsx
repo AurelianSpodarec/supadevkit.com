@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import convert from "@svgr/core/lib/convert";
 import JSXPlugin from "@svgr/plugin-jsx";
@@ -24,17 +24,25 @@ const defaultOptions = {
   optimizePaths: false,
 };
 
+
 function PageContent() {
   const [initialCode, setInitialCode] = useState(`<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M234.5 5.7c13.9-5 29.1-5 43.1 0l192 68.6C495 83.4 512 107.5 512 134.6l0 242.9c0 27-17 51.2-42.5 60.3l-192 68.6c-13.9 5-29.1 5-43.1 0l-192-68.6C17 428.6 0 404.5 0 377.4L0 134.6c0-27 17-51.2 42.5-60.3l192-68.6zM256 66L82.3 128 256 190l173.7-62L256 66zm32 368.6l160-57.1 0-188L288 246.6l0 188z"/></svg>`); // Replace with your SVG code
-  const [convertedCode, setConvertedCode] = useState("");
-  const [options, setOptions] = useState(defaultOptions);
-  const [optionMenuOpen, setOptionMenuOpen] = useState(true);
-  const [dataLoading, setDataLoading] = useState(false);
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M234.5 5.7c13.9-5 29.1-5 43.1 0l192 68.6C495 83.4 512 107.5 512 134.6l0 242.9c0 27-17 51.2-42.5 60.3l-192 68.6c-13.9 5-29.1 5-43.1 0l-192-68.6C17 428.6 0 404.5 0 377.4L0 134.6c0-27 17-51.2 42.5-60.3l192-68.6zM256 66L82.3 128 256 190l173.7-62L256 66zm32 368.6l160-57.1 0-188L288 246.6l0 188z"/></svg>`); // Replace with your SVG code
+  const [optimizedSvg, setOptimizedSvg] = useState("")
 
-  const [convertTo, setConvertTo] = useState("react")
+  const [convertTo, setConvertTo] = useState<"html" | "react" | "data-uri">("react")
+  const [convertedCode, setConvertedCode] = useState("");
+
+  const [options, setOptions] = useState(defaultOptions);
+  const [optionMenuOpen, setOptionMenuOpen] = useState(false);
+
+  const [dataLoading, setDataLoading] = useState(false);
   const [isPreview, setIsPreview] = useState(false)
 
+  const editorLang = {
+    html: html,
+    react: javascript
+  }
   //TODO: Output: HTML, JSX, React, React Native, Data URI, PNG
 
   // Handlers
@@ -61,20 +69,26 @@ function PageContent() {
     setOptions([...defaultOptions]);
   }
 
-  const handleOptimize = () => {
+  function optimizeSvgHtml(svg) {
     try {
-      const optimized = optimizeSvg(initialCode, options);
-      setConvertedCode(optimized);
+      return optimizeSvg(svg, options);
     } catch (err) {
       console.log("Failed to optimize SVG. Please check your input.", err);
+      return "Failed to optimize SVG"
     }
-  };
 
-  useEffect(() => {
+  }
+
+  // Initial Code: HTML
+  // Used for SVG: Updates but doesn't convert
+  // Optimized Code: 
+  // Converted Code: (if HTML, sow optimized code), React
+
+  function convertToReact(svg) {
     const wop = new Promise((resolve) => {
-      convert(initialCode, {
+      convert(svg, {
         prettier: true,
-        svgo: false,
+        svgo: true,
         jsxRuntime: "automatic",
         plugins: [JSXPlugin],
       })
@@ -91,14 +105,46 @@ function PageContent() {
     wop.then((result) => {
       setConvertedCode(result);
     });
-  }, [initialCode])
+  }
+
+
+  function handleConversion(svg) {
+    const optSvg = optimizeSvgHtml(initialCode)
+    setDataLoading(true)
+
+    console.log("opppp", optSvg)
+
+    let result = ""
+    switch (convertTo) {
+      case "html":
+        result = optSvg;
+        break;
+      case "react":
+        result = convertToReact(optSvg);
+        break;
+      // case "data-uri":
+      //   result = convertToDataUri(optSvg);
+      //   break;
+    }
+    setConvertedCode(result);
+    setDataLoading(false);
+    // optimize the SVG
+
+    // conver to react
+    // display optimized html
+    // convert to data-uri
+  }
 
   // Use Effects
   // ------------------------------------------------
 
   useEffect(() => {
-    handleOptimize()
-  }, [initialCode, options]);
+    if (initialCode) {
+      // const svg = optimizeSvgHtml(initialCode)
+      // setOptimizedSvg(svg)
+      handleConversion(initialCode)
+    }
+  }, [initialCode, options, convertTo])
 
   return (
     <main className="h-full w-full">
@@ -141,10 +187,10 @@ function PageContent() {
                           <span>Optimize</span>
                           <div className="flex flex-col h-[570px] flex-wrap items-center">
                             {SVG_OPTIONS.map(group => (
-                              <>
+                              <React.Fragment key={group.name}>
                                 {group.options.map((option) => (
-                                  <div className="mb-2 w-1/2 inline-flex flex-wrap flex-row text-xs">
-                                    <label key={option.id}>
+                                  <div key={option.id} className="mb-2 w-1/2 inline-flex flex-wrap flex-row text-xs">
+                                    <label>
                                       <input
                                         type="checkbox"
                                         checked={option[option.id]}
@@ -155,7 +201,7 @@ function PageContent() {
                                   </div>
                                 ))}
                                 <div className="min-h-4"></div>
-                              </>
+                              </React.Fragment>
                             ))}
                           </div>
                         </div>
@@ -251,11 +297,12 @@ function PageContent() {
 
             </div>
           </PlaygroundHeader>
-          <div className="h-full w-full flex items-center justify-center fill-white/80">
+          <div className={`h-full w-full flex items-center justify-center fill-white/80 ${dataLoading ? "opacity-50" : ""} `}>
             {isPreview ? (
-              <div className="h-full w-full flex items-center align-center justify-center max-w-[200px]" dangerouslySetInnerHTML={{ __html: convertedCode }} />
+              <div className="h-full w-full flex items-center align-center justify-center max-w-[200px]" dangerouslySetInnerHTML={{ __html: initialCode }} />
             ) : (
-              <SVGCodeMirror value={convertedCode} readOnly={true} lang={javascript()} />
+
+              <SVGCodeMirror value={convertedCode} readOnly={true} lang={editorLang[convertTo]()} />
             )}
           </div>
         </section>

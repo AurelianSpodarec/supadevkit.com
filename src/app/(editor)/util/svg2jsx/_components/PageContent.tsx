@@ -157,7 +157,7 @@ function PageContent() {
               </span>
 
               <div className="ml-auto">
-                <button onClick={() => toggleOptionMenu()} className={`p-1 rounded ${optionMenuOpen ? "bg-orange-500" : ""}`}>
+                <button onClick={() => toggleOptionMenu()} className={`p-1 rounded-sm ${optionMenuOpen ? "bg-orange-500" : ""}`}>
                   <svg className="h-4 w-4" xmlns='http://www.w3.org/2000/svg' fill='none'>
                     <g
                       stroke='currentColor'

@@ -12,14 +12,15 @@ function Content({ children, className }: IContent) {
     <section className="relative flex flex-col w-full h-full overflow-hidden">
 
       <main
-        className="rounded-xl bg-[#121212] bg-white/10 h-full flex-1 overflow-y-auto overflow-x-hidden mx-2"
+        className="rounded border border-gray-500/10 bg-[#121212] bg-white/10 h-full flex-1 overflow-y-auto overflow-x-hidden mx-2"
         style={{
+          backgroundColor: "#030000",
           backgroundImage: `
-        linear-gradient(45deg, #1d1d1d 25%, transparent 0),
-        linear-gradient(-45deg, #1d1d1d 25%, transparent 0),
-        linear-gradient(45deg, transparent 75%, #1d1d1d 0),
-        linear-gradient(-45deg, transparent 75%, #1d1d1d 0)
-      `,
+            linear-gradient(45deg, #1d1d1d 25%, transparent 0),
+            linear-gradient(-45deg, #1d1d1d 25%, transparent 0),
+            linear-gradient(45deg, transparent 75%, #1d1d1d 0),
+            linear-gradient(-45deg, transparent 75%, #1d1d1d 0)
+          `,
           backgroundPosition: '0 0, 0 10px, 10px -10px, -10px 0',
           backgroundSize: '20px 20px',
         }}

@@ -9,12 +9,7 @@ function Header() {
   const [mobileOpen, setMobileOpen] = useState(false)
 
   return (
-    <header
-      className="h-[55px] flex w-full align-center"
-      // style={{ background: "radial-gradient(circle at 35% 50%, rgba(43, 166, 255, .2) 0, transparent 45%), radial-gradient(circle at 65% 50%, rgba(246, 73, 66, .15) 0, transparent 45%)" }}
-      // style={{ background: "radial-gradient(circle at 35% 50%, rgb(35 38 46 / 92%) 0, transparent 45%), radial-gradient(circle at 65% 50%, rgb(106 32 170 / 44%) 0, #000000 45%)" }}
-      style={{ background: "radial-gradient(circle at 35% 50%, rgb(0 4 47 / 53%) 0, #fd000003 45%), radial-gradient(circle at 65% 50%, rgb(106 32 170 / 24%) 0, #000000 45%)" }}
-    >
+    <header className="h-[55px] flex w-full align-center relative bg-transparent">
       <div className="flex w-full justify-between align-center items-center px-4">
 
         <div className="flex items-center">
@@ -22,10 +17,13 @@ function Header() {
           <DesktopMenu />
         </div>
 
-        <div className="flex items-center space-x-2">
-
-          {/* Can do that later - not sure how modals will look like at first, what is a good solution, so it'll be a waste of time doing it now */}
-          {/* <button className="inline-flex bg-[#222223]/40 text-[#FFF]/90 items-center gap-2 justify-center whitespace-nowrap rounded-md text-sm font-medium border border-[#444] px-4 py-2.5">
+        <div className="flex items-center space-x-2.5">
+          <button onClick={() => alert("This button will show a modal with information about the specific tool being in use")}
+            className="inline-flex items-center gap-2 justify-center whitespace-nowrap rounded-sm 
+              text-sm font-medium ring-offset-background transition-colors 
+              focus-visible:outline focus-visible:outline-2 focus-visible:outline-indigo-500 disabled:pointer-events-none disabled:opacity-50 
+              bg-[#18001c] text-secondary-foreground border border-[#420a64] hover:bg-[#222223] px-6 py-2.5
+          ">
             <svg className="h-4 w-4" fill="none" viewBox="0 0 16 16">
               <path
                 stroke="currentColor"
@@ -52,10 +50,17 @@ function Header() {
                 rx="4"
               ></rect>
             </svg>
-            <span className="text-sm">About Image Filter</span>
-          </button> */}
+            <span className="text-sm">About {"$this"}</span>
+          </button>
 
-          <Link href="https://discord.gg/hpAWb4X4" target="blank" className="inline-flex items-center gap-2 justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-indigo-500 disabled:pointer-events-none disabled:opacity-50 bg-[#222223] text-secondary-foreground border border-[#444] hover:bg-[#222223] px-4 py-2.5">
+          <Link
+            href="https://discord.gg/hpAWb4X4"
+            target="blank"
+            className="inline-flex items-center gap-2 justify-center whitespace-nowrap rounded-sm 
+              text-sm font-medium ring-offset-background transition-colors 
+              focus-visible:outline focus-visible:outline-2 focus-visible:outline-indigo-500 disabled:pointer-events-none disabled:opacity-50 
+              bg-[#18001c] text-secondary-foreground border border-[#420a64] hover:bg-[#222223] px-6 py-2.5
+          ">
             <svg className="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 127.14 96.36">
               <g>
                 <g data-name="Discord Logos">

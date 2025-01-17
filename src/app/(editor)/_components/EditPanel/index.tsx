@@ -6,12 +6,12 @@ interface IProps {
 }
 
 function EditPanel({ children, code }: IProps) {
-
+  // bg-[#18181b]
   return (
     <aside
-      className="w-[420px] bg-[#18181b] overflow-auto h-full"
+      className="w-[420px] bg-transparent overflow-auto h-full"
       // style={{ background: "radial-gradient(circle at -6% -16%, rgb(55 22 78 / 54%) 0, #fd000003 45%), radial-gradient(circle at 65% 50%, rgb(27 24 27) 0, #18181b 45%)" }}
-      style={{ background: "radial-gradient(circle at -3% 4%, rgb(31 12 43) 0, #fd000003 45%), radial-gradient(circle at 65% 50%, rgb(27 24 27) 0, #070206 45%)" }}
+      // style={{ background: "radial-gradient(circle at -3% 4%, rgb(31 12 43) 0, #fd000003 45%), radial-gradient(circle at 65% 50%, rgb(27 24 27) 0, #070206 45%)" }}
     >
       {/* <div> */}
 

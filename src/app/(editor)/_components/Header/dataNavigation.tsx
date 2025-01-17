@@ -70,10 +70,10 @@ const dataNavigation:IMenuItem[] = [
       //   name: "Swap Image on Hover",
       //   url: "swap-image-on-hover"
       // },
-      // {
-      //   name: "Background in Text",
-      //   url: "background-in-text"
-      // },
+      {
+        name: "Background in Text",
+        url: "background-in-text"
+      },
       // {
       //   name: "Transform",
       //   url: "transform"

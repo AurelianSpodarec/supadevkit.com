@@ -34,7 +34,7 @@ function DesktopMenu() {
   return (
     <DropdownMenu open={open} onOpenChange={setOpen}>
       <DropdownMenuTrigger className="relative" asChild>
-        <div className="flex items-center align-center">
+        <div className="flex items-center text-orbitron align-center">
           {urlTopic &&
             <MenuItem
               className="hidden sm:flex"

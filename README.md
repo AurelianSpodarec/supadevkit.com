@@ -50,3 +50,22 @@ To learn more about Next.js, take a look at the following resources:
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+
+
+# SVG
+
+# Competitors
+https://www.svgviewer.dev/svg-to-react-jsx
+https://transform.tools/
+
+## SVGR
+
+SVGR: https://react-svgr.com/
+SVGR Playground: https://react-svgr.com/playground/
+SVGR Themes: https://uiwjs.github.io/react-codemirror/#/theme/data/copilot
+
+# SVGO
+SVGO: https://github.com/svg/svgo
+Docs: https://svgo.dev/docs/plugins-api/
+https://svgo.dev/docs/plugins/sortDefsChildren/
+Runin in Browser: https://github.com/rtivital/svgo-browser/issues/16
